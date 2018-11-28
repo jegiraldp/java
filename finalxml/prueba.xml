@@ -1,0 +1,78 @@
+<?xml version="1.0" ?> 
+<?xml-stylesheet type="text/xsl" href="horarioxsl.xsl"?>
+<horario>
+	<horas>
+		<hora>6-8</hora>
+		<lunes> Redes y Telecomunicaciones</lunes>
+		<martes>x</martes>
+		<miercoles>  x</miercoles>
+		<jueves> x </jueves>
+		<viernes>  x</viernes>
+		<sabado>x</sabado>
+		<domingo>x</domingo>
+	</horas>
+	<horas>
+		<hora>8-10</hora>
+		<lunes> x </lunes>
+		<martes>  x</martes>
+		<miercoles>  x</miercoles>
+		<jueves> x </jueves>
+		<viernes>  x</viernes>
+		<sabado>Linea  Profundizacion 2</sabado>
+		<domingo>x</domingo>
+	</horas>
+	<horas>
+		<hora>10-12</hora>
+		<lunes>  x </lunes>
+		<martes>  x</martes>
+		<miercoles>  x</miercoles>
+		<jueves> x </jueves>
+		<viernes>  x</viernes>
+		<sabado>Linea  Profundizacion 2</sabado>
+		<domingo>Topicos</domingo>
+	</horas>
+	<horas>
+		<hora>12-14</hora>
+		<lunes> x </lunes>
+		<martes>  Topicos avanzados de In. de software</martes>
+		<miercoles>  x</miercoles>
+		<jueves> Topicos avanzados de In. de software </jueves>
+		<viernes>  x</viernes>
+		<sabado>x</sabado>
+		<domingo>Topicos</domingo>
+	</horas>
+	<horas>
+		<hora>14-16</hora>
+		<lunes> x </lunes>
+		<martes>  x</martes>
+		<miercoles>  x</miercoles>
+		<jueves> x </jueves>
+		<viernes>  x</viernes>
+		<sabado>x</sabado>
+		<domingo>Topicos</domingo>
+	</horas>
+	<horas>
+		<hora>16-18</hora>
+		<lunes> x </lunes>
+		<martes>  Ingles III</martes>
+		<miercoles>  x</miercoles>
+		<jueves> Ingles III </jueves>
+		<viernes>  x</viernes>
+		<sabado>x</sabado>
+		<domingo>Topicos</domingo>
+	</horas>
+	<horas>
+		<hora>18-20</hora>
+		<lunes> Gestion de Proyectos Informaticos </lunes>
+		<martes> Laboratorio Redes</martes>
+		<miercoles>  Gestion de Proyectos Informaticos</miercoles>
+		<jueves> x </jueves>
+		<viernes>x</viernes>
+		<sabado> x </sabado>
+		<domingo>Topicos</domingo>
+	</horas>
+	<resultados>
+		<comando> x</comando>
+		<resultado>x</resultado>
+	</resultados>
+</horario>

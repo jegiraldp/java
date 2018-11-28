@@ -1,0 +1,122 @@
+--------------------------------------------------------------------------------------------------------------------------
+La interfase -- Proyecto aparte
+--------------------------------------------------------------------------------------------------------------------------
+
+package elPaquete;
+
+import java.rmi.*;
+
+public interface contador extends Remote {
+
+    int dec() throws RemoteException;
+
+    int inc() throws RemoteException;
+    
+    int getCount() throws RemoteException;;
+}
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------
+Clase que implementa interface --- proyecto servidor
+--------------------------------------------------------------------------------------------------------------------------
+package paqueteServer;
+
+import elPaquete.contador;
+import java.io.Serializable;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+
+public class implementa extends UnicastRemoteObject implements contador, Serializable {
+    
+    private int count;
+
+    public implementa() throws RemoteException {
+        count = 0;
+    }
+       
+    public int inc() {
+        count++;
+        return count;
+    }
+      
+    public int dec() {
+        count--;
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getCount() {
+        return count;
+    }
+ 
+}
+
+--------------------------------------------------------------------------------------------------------------------------
+Servidor --- proyecto servidor
+--------------------------------------------------------------------------------------------------------------------------
+package paqueteServer;
+
+import elPaquete.contador;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+
+public class inicio {
+      public static void main(String[] args) throws RemoteException, MalformedURLException, InterruptedException {
+        contador cont = new implementa();
+        Naming.rebind("cuentacuenta", cont);
+        System.out.println("Servidor Activo");
+        
+       /* for (int i=0; i < 1000; i++) {
+            System.out.println(String.format("Alice loop number: %d. Counter value: %d.", i, counter.getCount()));
+            Thread.sleep(1000);
+        }*/
+    }
+
+}//class
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------
+Cliente--- proyecto cliente
+--------------------------------------------------------------------------------------------------------------------------
+
+import elPaquete.contador;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+
+
+public class cliente {
+
+    public static void main(String[] args) 
+    throws NotBoundException, MalformedURLException, RemoteException, InterruptedException {
+        contador counter = (contador) Naming.lookup("//localhost/cuentacuenta");
+        System.out.println(counter.inc());
+       /* for (int i=0; i < 1000; i++) {
+            counter.inc();
+            System.out.println(String.format("Client loop number: %d.", i));
+            Thread.sleep(2000);
+        }*/
+        
+    }
+    
+}
+
+------------------------
+activar el rmiregistry con variable PATH
+Ejecutar server teniendo en cuenta classpath .punto
+Ejecuta cliente

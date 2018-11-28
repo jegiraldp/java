@@ -1,0 +1,16 @@
+<?xml?>
+<workspace>
+	<settings>
+		<label>ontoAgent</label>
+	</settings>
+	<users>
+		<user>
+			<path>ontoAgent.jcu</path>
+		</user>
+	</users>
+	<projects>
+		<project>
+			<path>ontoAgent.jcp</path>
+		</project>
+	</projects>
+</workspace>
