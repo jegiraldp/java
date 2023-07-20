@@ -15,7 +15,7 @@ public class alumno{
     	
 	public alumno(boolean v)throws IOException{
 		
-	System.out.print("\nDigite Documento -> ");
+	System.out.print("\nDigite Documento cccc-> ");
 	docu = br.readLine();
 	cod = Integer.parseInt(docu);
 		
