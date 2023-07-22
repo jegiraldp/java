@@ -35,8 +35,8 @@ public class inicioconsola {
 
     }
 
-    static void proceder(){
-        resultado=0;
+    static void proceder() {
+        resultado = 0;
         System.out.print("\tDigite número 1 : --> ");
         int numUno = scn.nextInt();
         System.out.print("\tDigite número 2 : --> ");
@@ -45,9 +45,16 @@ public class inicioconsola {
         if (opcion == 1) resultado = suma.calcular(numUno, numDos);
         if (opcion == 2) resultado = resta.calcular(numUno, numDos);
         if (opcion == 3) resultado = multiplicacion.calcular(numUno, numDos);
-        if (opcion == 4) resultado = division.calcular(numUno, numDos);
-        System.out.println("\tResultado es " + resultado);
-        main(null);
+        if (opcion == 4) {
+            if (numDos == 0) {
+                System.out.println("\tError al dividir por cero");
+                main(null);
+            } else {
+                resultado = division.calcular(numUno, numDos);
+            }
+            System.out.println("\tResultado es " + resultado);
+            main(null);
+        }
     }
 
 
