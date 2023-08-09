@@ -2,8 +2,10 @@ import java.util.ArrayList;
 
 public class inicio {
     public static void main(String[] args) {
-        ArrayList<categoria> listaCategorias = new ArrayList<categoria>();
-        listaCategorias.add(new categoria(123,"aseo"));
+
+        ArrayList<categoria> listaCategorias = new ArrayList<>();
+        categoria c1 = new categoria(123, "aseo");
+        listaCategorias.add(c1);
         listaCategorias.add(new categoria(124,"licores"));
 
 

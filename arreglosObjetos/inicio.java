@@ -11,7 +11,8 @@ public class inicio {
 
         //lista de atenciones
         atencion[] listaAtenciones = new atencion[2];
-        listaAtenciones[0] = new atencion(111,listaServicios[0],listaVehiculos[0],listaProf[0]);
+        listaAtenciones[0] = new atencion(111,listaServicios[0]
+                ,listaVehiculos[0],listaProf[0]);
         listaAtenciones[1] = new atencion(222,listaServicios[1],listaVehiculos[1],listaProf[1]);
 
         //ver atenciones
@@ -42,10 +43,12 @@ public class inicio {
         //crear propietarios
         listaProp = new propietario[2];
         listaProp[0] =
-                new propietario(123,"Jorge Propietario 1", 3005555555L,"correo123@correo.com");
+                new propietario(123,"Jorge Propietario 1",
+                        3005555555L,"correo123@correo.com");
 
         listaProp[1] =
-                new propietario(124,"Jorge Propietario 2", 3006666666L,"correo124@correo.com");
+                new propietario(124,"Jorge Propietario 2",
+                        3006666666L,"correo124@correo.com");
 
         //crearProfesionales
         listaProf = new profesional[2];

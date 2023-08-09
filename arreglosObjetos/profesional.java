@@ -2,7 +2,8 @@ public class profesional extends persona{
     private int codigoEmpleado;
     public int extension;
 
-    public profesional(int cedula, String nombreCompleto, long telefonoContacto, int extension) {
+    public profesional(int cedula, String nombreCompleto, long telefonoContacto,
+                       int extension) {
         super(cedula, nombreCompleto, telefonoContacto);
         this.extension=extension;
     }
