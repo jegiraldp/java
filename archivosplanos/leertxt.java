@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class leertxt {
 
@@ -18,7 +16,7 @@ public class leertxt {
 
             bufferedReader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error tipo IO");
         }
     }
 }

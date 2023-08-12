@@ -1,6 +1,4 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class escribirtxt {
 
@@ -8,10 +6,11 @@ public class escribirtxt {
         String nombreArchivo = "archivo.txt";
 
         try {
+            //PrintWriter pw = new PrintWriter("archivo.txt","UTF-8");
+
             FileWriter fileWriter = new FileWriter(nombreArchivo, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-            bufferedWriter.write("hola escribo");
+            bufferedWriter.write("43,bombillo,9;");
             bufferedWriter.newLine();
 
             bufferedWriter.close();
