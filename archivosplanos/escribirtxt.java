@@ -10,7 +10,7 @@ public class escribirtxt {
 
             FileWriter fileWriter = new FileWriter(nombreArchivo, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write("43,bombillo,9;");
+            bufferedWriter.write("43,jorge,9;");
             bufferedWriter.newLine();
 
             bufferedWriter.close();

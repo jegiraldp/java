@@ -10,9 +10,17 @@ public class leertxt {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             String linea;
-            while ((linea = bufferedReader.readLine()) != null) {
-                System.out.println(linea);
+            String[] n = new String[10];
+            linea = bufferedReader.readLine();
+            String[] plantas = linea.split(";");
+            String[] planta=null;
+            for (int i = 0; i <plantas.length ; i++) {
+                planta=plantas[i].split(",");
+                System.out.println(planta[1]);
+                //planta p = new planta(planta[0],planta[1])
+                //lista.add(p)
             }
+
 
             bufferedReader.close();
         } catch (IOException e) {
