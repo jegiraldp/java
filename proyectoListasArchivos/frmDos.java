@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class frmInicio extends JFrame implements ActionListener{
+public class frmDos extends JFrame implements ActionListener{
 
     static JButton btnLeer, btnListar, btnNuevo;
     static JTextArea txtTablero;
@@ -13,9 +13,7 @@ public class frmInicio extends JFrame implements ActionListener{
     static JLabel lblCodigo;
     static String linea;
     static ArrayList<contacto> laLista;
-    static frmDos ventanaDos;
-    static frmInicio ventana;
-    public frmInicio(){
+    public frmDos(){
 
         //configuración
         btnLeer = new JButton("Leer Archivo");
@@ -73,21 +71,14 @@ public class frmInicio extends JFrame implements ActionListener{
 
         setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         setLocation(300,200);
-        setVisible (true);
+        setVisible (false);
 
     }
 
-    public static void main(String[] args) {
-
-         ventana= new frmInicio();
-        ventanaDos = new frmDos();
-    }
 
     public void actionPerformed(ActionEvent e)  {
         String listaArea="";
         if (e.getSource().equals(btnListar)){
-            ventanaDos.setVisible(true);
-            ventana.setVisible(false);
             for (contacto c:laLista){
                 listaArea=listaArea+c.getCodigo()+"-"+c.nombre+"\n";
             }
@@ -97,10 +88,10 @@ public class frmInicio extends JFrame implements ActionListener{
         if(e.getSource().equals(btnLeer)){
             try{
                 txtTablero.append("");
-              linea = readFile.leer("c:\\codeall\\contactos.txt");
-              txtTablero.setText("");
-              txtTablero.append("Archivo leido\nLista creada");
-              laLista=lista.crearLista(linea);
+                linea = readFile.leer("c:\\codeall\\contactos.txt");
+                txtTablero.setText("");
+                txtTablero.append("Archivo leido\nLista creada");
+                laLista=lista.crearLista(linea);
 
             }catch(IOException ioe){
                 System.out.println(ioe);
@@ -124,4 +115,4 @@ public class frmInicio extends JFrame implements ActionListener{
 
 
 
-    }
+}
