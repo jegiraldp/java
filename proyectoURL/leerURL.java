@@ -4,7 +4,7 @@ import java.net.*;
 class leerURL {
 
   public static void main(String[] args)
-    throws IOException, MalformedURLException {
+          throws IOException, MalformedURLException {
     String inputLine;
 
     URL obj = new URL("https://www.giraldojorge.com/jorge/index.html");

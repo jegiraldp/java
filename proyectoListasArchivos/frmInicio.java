@@ -86,8 +86,8 @@ public class frmInicio extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e)  {
         String listaArea="";
         if (e.getSource().equals(btnListar)){
-            ventanaDos.setVisible(true);
-            ventana.setVisible(false);
+            //ventanaDos.setVisible(true);
+            //ventana.setVisible(false);
             for (contacto c:laLista){
                 listaArea=listaArea+c.getCodigo()+"-"+c.nombre+"\n";
             }
@@ -98,7 +98,7 @@ public class frmInicio extends JFrame implements ActionListener{
             try{
                 txtTablero.append("");
               linea = readFile.leer("c:\\codeall\\contactos.txt");
-              txtTablero.setText("");
+              txtTablero.setText(linea);
               txtTablero.append("Archivo leido\nLista creada");
               laLista=lista.crearLista(linea);
 
@@ -113,6 +113,7 @@ public class frmInicio extends JFrame implements ActionListener{
             String tel = txtTelefono.getText();
 
             contacto c = new contacto(cod,nom,tel);
+            laLista.add(c);
            /* String lineaEscribir = linea+";"+cod+","+nom+","+tel;
             try{
                 writeFile.escribir(lineaEscribir,"c:\\codeall\\contactos.txt");
