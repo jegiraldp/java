@@ -9,6 +9,7 @@ public class lista {
          for (int i = 0; i < contacto.length; i++) {
             atributos=contacto[i].split(",");
             c= new contacto(atributos[0],atributos[1],atributos[2]);
+             //System.out.println(c.getCodigo()+":"+c.nombre+":"+c.telefono);
             listaContactos.add(c);
 
          }

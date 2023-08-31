@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class frmInicio extends JFrame implements ActionListener{
 
-    static JButton btnLeer, btnListar, btnNuevo;
+    static JButton btnLeer, btnListar, btnNuevo, btnActualizar;
     static JTextArea txtTablero;
     static JTextField txtCodigo,txtNombre,txtTelefono;
     static JLabel lblCodigo;
@@ -18,10 +18,16 @@ public class frmInicio extends JFrame implements ActionListener{
     public frmInicio(){
 
         //configuración
-        btnLeer = new JButton("Leer Archivo");
+        btnLeer = new JButton("Read_File");
         btnLeer.setLocation(30,30);
-        btnLeer.setSize(130,30);
+        btnLeer.setSize(105,30);
         btnLeer.addActionListener(this);
+
+        btnActualizar = new JButton("Write_File");
+        btnActualizar.setLocation(160,30);
+        btnActualizar.setSize(105,30);
+        btnActualizar.addActionListener(this);
+       // btnActualizar.setEnabled(false);
 
         txtTablero = new JTextArea();
         txtTablero.setLocation(30,70);
@@ -56,6 +62,7 @@ public class frmInicio extends JFrame implements ActionListener{
 
         //adicionar
         add(btnLeer);
+        add(btnActualizar);
         add(txtTablero);
         add(txtCodigo);
         add(txtNombre);
@@ -86,21 +93,25 @@ public class frmInicio extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e)  {
         String listaArea="";
         if (e.getSource().equals(btnListar)){
-            //ventanaDos.setVisible(true);
-            //ventana.setVisible(false);
-            for (contacto c:laLista){
-                listaArea=listaArea+c.getCodigo()+"-"+c.nombre+"\n";
+            System.out.println("----------");
+            for (contacto con:laLista) {
+                listaArea=listaArea+"\n"+con.getCodigo() + "," + con.nombre + "," + con.telefono;
+                //System.out.println(con.getCodigo() + "," + con.nombre + "," + con.telefono);
             }
-            txtTablero.setText("");
+                txtTablero.setText("");
             txtTablero.append(listaArea);
         }
         if(e.getSource().equals(btnLeer)){
             try{
                 txtTablero.append("");
               linea = readFile.leer("c:\\codeall\\contactos.txt");
-              txtTablero.setText(linea);
-              txtTablero.append("Archivo leido\nLista creada");
+              //txtTablero.setText(linea);
+              txtTablero.append("\nArchivo leido\nLista creada");
               laLista=lista.crearLista(linea);
+                /*
+                for (contacto con:laLista) {
+                    System.out.println(con.getCodigo()+","+con.nombre+","+con.telefono);
+                }*/
 
             }catch(IOException ioe){
                 System.out.println(ioe);
@@ -114,12 +125,23 @@ public class frmInicio extends JFrame implements ActionListener{
 
             contacto c = new contacto(cod,nom,tel);
             laLista.add(c);
-           /* String lineaEscribir = linea+";"+cod+","+nom+","+tel;
+
+        }
+        if(e.getSource().equals(btnActualizar)){
             try{
-                writeFile.escribir(lineaEscribir,"c:\\codeall\\contactos.txt");
+            String escribir="";
+            for (contacto c:laLista){
+                escribir=escribir+";"+c.getCodigo()
+                        +","+c.nombre+","+c.telefono;
+            }
+
+                writeFile.escribir(escribir,"c:\\codeall\\contactos.txt");
             }catch(IOException ioe){
                 System.out.println(ioe);
-            }*/
+            }
+
+
+
         }
     }
 
