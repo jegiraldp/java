@@ -1,25 +1,32 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class frmDos extends JFrame implements ActionListener{
+public class frmRegistrar extends JFrame implements ActionListener{
 
-    static JButton btnLeer, btnListar, btnNuevo;
+    static JButton btnLeer, btnListar, btnNuevo, btnActualizar;
     static JTextArea txtTablero;
     static JTextField txtCodigo,txtNombre,txtTelefono;
     static JLabel lblCodigo;
     static String linea;
     static ArrayList<contacto> laLista;
-    public frmDos(){
+    //static frmDos ventanaDos;
+    static frmRegistrar ventana;
+    public frmRegistrar(){
 
         //configuración
-        btnLeer = new JButton("Leer Archivo");
+        btnLeer = new JButton("Read_File");
         btnLeer.setLocation(30,30);
-        btnLeer.setSize(130,30);
+        btnLeer.setSize(105,30);
         btnLeer.addActionListener(this);
+
+        btnActualizar = new JButton("Write_File");
+        btnActualizar.setLocation(160,30);
+        btnActualizar.setSize(105,30);
+        btnActualizar.addActionListener(this);
+       // btnActualizar.setEnabled(false);
 
         txtTablero = new JTextArea();
         txtTablero.setLocation(30,70);
@@ -54,6 +61,7 @@ public class frmDos extends JFrame implements ActionListener{
 
         //adicionar
         add(btnLeer);
+        add(btnActualizar);
         add(txtTablero);
         add(txtCodigo);
         add(txtNombre);
@@ -71,27 +79,38 @@ public class frmDos extends JFrame implements ActionListener{
 
         setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         setLocation(300,200);
-        setVisible (false);
+        setVisible (true);
 
     }
 
+    public static void main(String[] args) {
+
+         ventana= new frmRegistrar();
+
+    }
 
     public void actionPerformed(ActionEvent e)  {
         String listaArea="";
         if (e.getSource().equals(btnListar)){
-            for (contacto c:laLista){
-                listaArea=listaArea+c.getCodigo()+"-"+c.nombre+"\n";
+            System.out.println("----------");
+            for (contacto con:laLista) {
+                listaArea=listaArea+"\n"+con.getCodigo() + "," + con.nombre + "," + con.telefono;
+                //System.out.println(con.getCodigo() + "," + con.nombre + "," + con.telefono);
             }
-            txtTablero.setText("");
+                txtTablero.setText("");
             txtTablero.append(listaArea);
         }
         if(e.getSource().equals(btnLeer)){
             try{
                 txtTablero.append("");
-                linea = readFile.leer("c:\\codeall\\contactos.txt");
-                txtTablero.setText("");
-                txtTablero.append("Archivo leido\nLista creada");
-                laLista=lista.crearLista(linea);
+              linea = readFile.leer("c:\\codeall\\contactos.txt");
+              //txtTablero.setText(linea);
+              txtTablero.append("\nArchivo leido\nLista creada");
+              laLista=lista.crearLista(linea);
+                /*
+                for (contacto con:laLista) {
+                    System.out.println(con.getCodigo()+","+con.nombre+","+con.telefono);
+                }*/
 
             }catch(IOException ioe){
                 System.out.println(ioe);
@@ -104,15 +123,27 @@ public class frmDos extends JFrame implements ActionListener{
             String tel = txtTelefono.getText();
 
             contacto c = new contacto(cod,nom,tel);
-           /* String lineaEscribir = linea+";"+cod+","+nom+","+tel;
+            laLista.add(c);
+
+        }
+        if(e.getSource().equals(btnActualizar)){
             try{
-                writeFile.escribir(lineaEscribir,"c:\\codeall\\contactos.txt");
+            String escribir="";
+            for (contacto c:laLista){
+                escribir=escribir+";"+c.getCodigo()
+                        +","+c.nombre+","+c.telefono;
+            }
+
+                writeFile.escribir(escribir,"c:\\codeall\\contactos.txt");
             }catch(IOException ioe){
                 System.out.println(ioe);
-            }*/
+            }
+
+
+
         }
     }
 
 
 
-}
+    }
