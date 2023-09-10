@@ -1,8 +1,10 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class frmListar extends JFrame implements ActionListener {
     JLabel lblTitulo;
@@ -10,12 +12,22 @@ public class frmListar extends JFrame implements ActionListener {
     ImageIcon imgHome;
     static frmListar ventana;
     static JTable tabla;
+    static DefaultTableModel model;
 
-    public static frmListar crear()throws IOException{
+    public static frmListar crear(ArrayList<contacto> listaContactos) throws IOException{
         if(ventana==null) {
             //System.out.println("es null");
             ventana = new frmListar();
         }
+            //cargarLista
+        model.setRowCount(0);
+        for (contacto c:listaContactos) {
+            Object[] fila = {c.getCodigo(), c.nombre, c.telefono};
+            model.addRow(fila);
+        }
+            //
+
+
             return ventana;
 
     }
@@ -34,9 +46,12 @@ public class frmListar extends JFrame implements ActionListener {
         btnRegresar.setSize(60, 30);
         btnRegresar.addActionListener(this);
 
-        Object[][] datos={{123,"jorge"},{124,"jorge2"}};
-        String[] headers={"Código","Nombre"};
-        tabla = new JTable(datos,headers);
+         model = new DefaultTableModel();
+        tabla = new JTable(model);
+        model.addColumn("Documento");
+        model.addColumn("Nombre");
+        model.addColumn("Teléfono");
+
         JScrollPane scrollpane = new JScrollPane(tabla);
         scrollpane.setLocation(40,60);
         scrollpane.setSize(350,200);

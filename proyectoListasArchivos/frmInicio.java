@@ -10,6 +10,7 @@ public class frmInicio extends JFrame implements ActionListener{
     static ImageIcon imgLogo, imgRegistrar, imgListar;
     static frmListar vListar;
     static frmInicio vInicio;
+    static ArrayList<contacto> listaContactos;
 
 
     public frmInicio() throws IOException {
@@ -65,7 +66,7 @@ public class frmInicio extends JFrame implements ActionListener{
         String infoArchivo = readFile.leer(".\\files\\contactos.txt");
         lblInformacion.setText("Archivo cargado");
         //crearLista
-        ArrayList<contacto> listaContactos= lista.crearLista(infoArchivo);
+        listaContactos= lista.crearLista(infoArchivo);
         lblInformacion.setText(lblInformacion.getText()+" :: Lista creada");
     }
 
@@ -78,7 +79,7 @@ public class frmInicio extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e)  {
         if(e.getSource().equals(btnListar)){
             try {
-                vListar= frmListar.crear();
+                vListar= frmListar.crear(listaContactos);
                 vListar.setVisible(true);
                 vInicio.setVisible(false);
 
