@@ -1,17 +1,22 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class frmInicio extends JFrame implements ActionListener{
     static JButton btnListar, btnRegistrar;
     static JLabel lblTitulo, lblLogo, lblInformacion;
     static ImageIcon imgLogo, imgRegistrar, imgListar;
+    static frmListar vListar;
+    static frmInicio vInicio;
 
-    public frmInicio(){
+
+    public frmInicio() throws IOException {
         //configuracion
         imgLogo = new ImageIcon(".\\img\\logo.png");
         imgRegistrar = new ImageIcon(".\\img\\add.png");
-        imgListar = new ImageIcon(".\\img\\list.png");
+        imgListar = new ImageIcon(".\\img\\search.png");
 
         lblTitulo = new JLabel("Sistema de contactos");
         lblTitulo.setLocation(125,20);
@@ -25,6 +30,7 @@ public class frmInicio extends JFrame implements ActionListener{
         btnListar = new JButton("Listar", imgListar);
         btnListar.setLocation(215,60);
         btnListar.setSize(105,40);
+        btnListar.addActionListener(this);
 
         lblLogo = new JLabel(imgLogo);
         lblLogo.setLocation(100,80);
@@ -32,9 +38,8 @@ public class frmInicio extends JFrame implements ActionListener{
 
         lblInformacion = new JLabel("");
         lblInformacion.setForeground(Color.RED);
-        lblInformacion.setLocation(100,270);
-        lblInformacion.setSize(100,30);
-
+        lblInformacion.setLocation(50,270);
+        lblInformacion.setSize(200,30);
 
 
         //add
@@ -55,16 +60,32 @@ public class frmInicio extends JFrame implements ActionListener{
         setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         setLocation(300,200);
         setVisible (true);
+
+        //leer archivo plano
+        String infoArchivo = readFile.leer(".\\files\\contactos.txt");
+        lblInformacion.setText("Archivo cargado");
+        //crearLista
+        ArrayList<contacto> listaContactos= lista.crearLista(infoArchivo);
+        lblInformacion.setText(lblInformacion.getText()+" :: Lista creada");
     }
 
-    public static void main(String[] args) {
-        new frmInicio().setVisible(true);
-
-
+    public static void main(String[] args)throws IOException {
+        vInicio=new frmInicio();
+        vInicio.setVisible(true);
     }
 
 
     public void actionPerformed(ActionEvent e)  {
+        if(e.getSource().equals(btnListar)){
+            try {
+                vListar= frmListar.crear();
+                vListar.setVisible(true);
+                vInicio.setVisible(false);
+
+            } catch (IOException ex) {
+                System.out.println(ex);
+            }
+        }
 
     }
 

@@ -6,7 +6,7 @@ public class readFile {
             FileReader fr = new FileReader(archivo);
             BufferedReader br = new BufferedReader(fr);
             String linea=br.readLine();
-        System.out.println(linea);
+        //System.out.println(linea);
             return linea;
     }
 }

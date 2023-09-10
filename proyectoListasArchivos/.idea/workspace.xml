@@ -5,13 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45bc1ea4-ff20-47fb-90bd-5db91cc0e0f2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frmInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/frmInicio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/proyectoListasArchivos/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proyectoListasArchivos/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/proyectoListasArchivos/frmInicio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proyectoListasArchivos/frmInicio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/proyectoListasArchivos/readFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proyectoListasArchivos/readFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/readFile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -21,13 +33,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\codeall\java\proyectoListasArchivos\img" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="frmInicio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="frmInicio" />
