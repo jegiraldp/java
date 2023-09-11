@@ -17,7 +17,7 @@ public class frmInicio extends JFrame implements ActionListener{
         //configuracion
         imgLogo = new ImageIcon(".\\img\\logo.png");
         imgRegistrar = new ImageIcon(".\\img\\add.png");
-        imgListar = new ImageIcon(".\\img\\search.png");
+        imgListar = new ImageIcon(".\\img\\list.png");
 
         lblTitulo = new JLabel("Sistema de contactos");
         lblTitulo.setLocation(125,20);

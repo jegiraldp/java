@@ -8,8 +8,8 @@ public class lista {
         String[] atributos;
          for (int i = 0; i < contacto.length; i++) {
             atributos=contacto[i].split(",");
-            c= new contacto(atributos[0],atributos[1],atributos[2]);
-             //System.out.println(c.getCodigo()+":"+c.nombre+":"+c.telefono);
+            c= new contacto(atributos[0],atributos[1],atributos[2],atributos[3]);
+            // System.out.println(c.getDocumento()+":"+c.nombre+":"+c.telefono+":"+c.foto);
             listaContactos.add(c);
 
          }

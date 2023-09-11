@@ -94,7 +94,7 @@ public class frmRegistrar extends JFrame implements ActionListener{
         if (e.getSource().equals(btnListar)){
             System.out.println("----------");
             for (contacto con:laLista) {
-                listaArea=listaArea+"\n"+con.getCodigo() + "," + con.nombre + "," + con.telefono;
+                listaArea=listaArea+"\n"+con.getDocumento() + "," + con.nombre + "," + con.telefono;
                 //System.out.println(con.getCodigo() + "," + con.nombre + "," + con.telefono);
             }
                 txtTablero.setText("");
@@ -122,7 +122,7 @@ public class frmRegistrar extends JFrame implements ActionListener{
             String nom = txtNombre.getText();
             String tel = txtTelefono.getText();
 
-            contacto c = new contacto(cod,nom,tel);
+            contacto c = new contacto(cod,nom,tel,"");
             laLista.add(c);
 
         }
@@ -130,7 +130,7 @@ public class frmRegistrar extends JFrame implements ActionListener{
             try{
             String escribir="";
             for (contacto c:laLista){
-                escribir=escribir+";"+c.getCodigo()
+                escribir=escribir+";"+c.getDocumento()
                         +","+c.nombre+","+c.telefono;
             }
 
