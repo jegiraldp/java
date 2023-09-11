@@ -7,6 +7,7 @@ public class tres extends dos{
     }
 
     public static void main(String[] args) {
+
         tres obj = new tres(1,2,3);
     }
 }
