@@ -9,7 +9,11 @@ public class hilo extends Thread{
 	
 	public void run(){
 		System.out.println(getName()+":Inicio");
-		imprimir.contador(getName());
+		try {
+			imprimir.contador(getName());
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 

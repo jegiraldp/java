@@ -60,9 +60,7 @@ public class frmInicio extends JFrame implements ActionListener{
 
         setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         setLocation(300,200);
-        setVisible (true);
-
-        //leer archivo plano
+         //leer archivo plano
         String infoArchivo = readFile.leer(".\\files\\contactos.txt");
         lblInformacion.setText("Archivo cargado");
         //crearLista

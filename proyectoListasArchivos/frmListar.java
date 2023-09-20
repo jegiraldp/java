@@ -227,7 +227,7 @@ public class frmListar extends JFrame implements ActionListener {
 
         if(e.getSource().equals(btnNewFoto)){
             fileChooser = new JFileChooser();
-            filtro = new FileNameExtensionFilter("Imágenes (PNG, JPEG, GIF)",
+            filtro = new FileNameExtensionFilter("Imágenes (PNG, JPEG, GIF)..",
                     "png", "jpeg", "jpg", "gif");
             fileChooser.setFileFilter(filtro);
             int resultado = fileChooser.showOpenDialog(null);

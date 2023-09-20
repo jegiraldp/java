@@ -11,7 +11,11 @@ public class hilo extends Thread{
 		}//
 		
 		public void run(){
-			imprimir.himno(this.frases);
+			try {
+				imprimir.himno(this.frases);
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
 		}///
 
 	}
