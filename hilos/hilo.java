@@ -1,4 +1,4 @@
-
+import java.util.*;
 class hilo extends Thread {
     public hilo(String nombre) {
         setName(nombre);
@@ -12,17 +12,14 @@ class hilo extends Thread {
 
 
     void metodo(){
-        int tiempo=0;
-                if(getName().equals("h1")){
-                    tiempo=1000;
-                }
-        if(getName().equals("h2")){
-            tiempo=500;
-        }
+        String punto=".";
+        Random rnd = new Random();
+        int tiempo=rnd.nextInt(500,1000);
         try {
             for (int i = 0; i <10 ; i++) {
                 Thread.sleep(tiempo);
-                System.out.println("Hilo "+getName()+ " cuenta: "+i);
+                System.out.println(getName()+":"+punto);
+                punto=punto+".";
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
