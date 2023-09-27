@@ -9,7 +9,7 @@ public class conectar{
 	public static void main (String arg[]) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
 	
 	
-	String url = "jdbc:mysql://127.0.0.1:3306/truckdb?user=root&password=manthaAll1*";
+	String url = "jdbc:mysql://127.0.0.1:3306/truckdb?user=root&password=";
     Driver d = (Driver)Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 	Connection conn = DriverManager.getConnection(url);
 
