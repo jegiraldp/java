@@ -1,9 +1,16 @@
 class inicio{
-    public static void main(String[] args)throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
 
-        for (int i = 0; i <20 ; i++) {
-            hilo h = new hilo("h"+(i+1));
-        }
+        hiloPares h1 = new hiloPares("Hilo Pares");
+        hiloImpares h2= new hiloImpares("Hilo Impares");
+
+        h1.start();
+        h2.start();
+
+        h1.join();
+        h2.join();
+
+        System.out.println("Soy el main y ya termine");
 
     }
 
