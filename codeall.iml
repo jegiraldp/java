@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/agentes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/algoritmoGenetico" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/archivosplanos" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/arreglosObjetos" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/batallaNaval" isTestSource="false" packagePrefix="todo" />
+      <sourceFolder url="file://$MODULE_DIR$/calculadora_" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ejemplosDOM" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/funcionesLambda" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/hilos" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ordenamientoBusqeuda" isTestSource="false" packagePrefix="pqtOrdenamiento" />
+      <sourceFolder url="file://$MODULE_DIR$/paqueteEjemplo" isTestSource="false" packagePrefix="y2" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoBanco" isTestSource="false" packagePrefix="bancario" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoCarreraCaballos" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoColecciones" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoCuadradoUDP" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoDomotica" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoGruaHilos" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoHilos" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoHilosBanco" isTestSource="false" packagePrefix="banco" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoHilosGear" isTestSource="false" packagePrefix="pqtGear" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoListas" isTestSource="false" packagePrefix="pqtList" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoListasArchivos" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoMonitorCell" isTestSource="false" packagePrefix="pqtCelular" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoRSS" isTestSource="false" packagePrefix="pqt" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoSerializaUDP" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoSerializacion" isTestSource="false" packagePrefix="pqt" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoSerializacionBackup" isTestSource="false" packagePrefix="pqtcelular" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoSincronizacion" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoSonidos" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/proyectoURL" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/sistemaMatricula" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
