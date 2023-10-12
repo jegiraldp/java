@@ -2,15 +2,18 @@ Clase espejo POO
 Temática: Clases, objetos, conexión a bases de datos.
 
 1. Descargar e instalar MySQL Community Server
+https://dev.mysql.com/downloads/mysql/
+
+root
 
 2. Acceder a MySQL: Ubicarse en carpeta y acceder al archivo MySQL.
-Comando de acceso: mysql -u root -p  (el password es elq ue se digito en la instalación)
+Comando de acceso: mysql -u root -p  (el password es el que se digito en la instalación)
 
 3. Crear base de datos
-create table base_de_datos;
+create database base_de_datos;
 
 4. Crear tabla
-use tabla base_de_datos
+use base_de_datos
 create table productos(id int(5), nombre varchar(50), cantidad int(4))
 
 5. insertar datos
@@ -20,5 +23,8 @@ insert into table productos (id, nombre, cantidad) values (2,"escoba",3);
 select * from productos
 
 7.Descargar Objeto conector de bases de datos para java y mysql
+https://www.mysql.com/products/connector/
+https://dev.mysql.com/downloads/connector/j/
 
-8. COnfigurar IDE (IntelliJ IDEA):
+8. Configurar IDE (IntelliJ IDEA):
+
