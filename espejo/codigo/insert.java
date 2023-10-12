@@ -6,21 +6,13 @@ import java.sql.SQLException;
 
 
 public class insert{
-	
-	public static void main (String arg[])throws IllegalAccessException, ClassNotFoundException, SQLException, InstantiationException{
+
+	public static void nuevo(Connection conn, int codigo, String nombre) throws IllegalAccessException, ClassNotFoundException, SQLException, InstantiationException{
 		
-	String url = "jdbc:mysql://127.0.0.1:3306/tienda?user=root&password=manthaAll1*";
-	
-	Driver d = (Driver)Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-    Connection conn = DriverManager.getConnection(url);
-		
-	String  SQLInsert = "insert into productos (codigo, nombre) values (998,'silla')";
+	String  SQLInsert = "insert into productos (codigo, nombre) values ("+codigo+",\""+nombre+"\")";
 	Statement s = conn.createStatement();
 	s.executeUpdate(SQLInsert);
-	
-	conn.close();
-	
-	System.out.println("Desconectado!!");
-	
+
+
 	}
 	}
