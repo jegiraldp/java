@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef2eeab0-c6a6-4f6e-b5c4-3ad05e93400b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frmInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/frmInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frmListar.java" beforeDir="false" afterPath="$PROJECT_DIR$/frmListar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/proyectoListasArchivos/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proyectoListasArchivos/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/proyectoListasArchivos/frmInicio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proyectoListasArchivos/frmInicio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proyectoMySQL/insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proyectoMySQL/insert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proyectoMySQL/out/production/proyectoMySQL/conectar.class" beforeDir="false" afterPath="$PROJECT_DIR$/../proyectoMySQL/out/production/proyectoMySQL/conectar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proyectoMySQL/out/production/proyectoMySQL/insert.class" beforeDir="false" afterPath="$PROJECT_DIR$/../proyectoMySQL/out/production/proyectoMySQL/insert.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proyectoMySQL/out/production/proyectoMySQL/selectmysql.class" beforeDir="false" afterPath="$PROJECT_DIR$/../proyectoMySQL/out/production/proyectoMySQL/selectmysql.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proyectoMySQL/selectmysql.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proyectoMySQL/selectmysql.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +33,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/codeall/java/proyectoSincronizacion"
+    "last_opened_file_path": "C:/codeall/java/proyectoHilos"
   }
 }]]></component>
   <component name="RunManager">
