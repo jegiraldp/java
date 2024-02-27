@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 
 public class insert{
+<<<<<<< HEAD
 	
 	public static void main (String arg[])throws IllegalAccessException, ClassNotFoundException, SQLException, InstantiationException{
 		
@@ -22,5 +23,15 @@ public class insert{
 	
 	System.out.println("Desconectado!!");
 	
+=======
+
+	public static void nuevo(Connection conn, int codigo, String nombre) throws IllegalAccessException, ClassNotFoundException, SQLException, InstantiationException{
+		
+	String  SQLInsert = "insert into productos (codigo, nombre) values ("+codigo+",\""+nombre+"\")";
+	Statement s = conn.createStatement();
+	s.executeUpdate(SQLInsert);
+
+
+>>>>>>> 03a49bee4ff221dea3c81330d4c3ab67932944a8
 	}
 	}

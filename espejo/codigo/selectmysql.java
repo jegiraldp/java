@@ -1,4 +1,5 @@
 import java.sql.*;
+<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -29,6 +30,17 @@ public class selectmysql{
 
 	
 	conn.close();
+=======
+
+public class selectmysql{
+	
+	public static ResultSet listar(Connection conn)throws ClassNotFoundException, SQLException, InstantiationException,IllegalAccessException{
+
+	String  SQLSelect = "select * from productos";
+	Statement s = conn.createStatement();
+	ResultSet resultado = s.executeQuery(SQLSelect);
+	return resultado;
+>>>>>>> 03a49bee4ff221dea3c81330d4c3ab67932944a8
 		
 	}//main
 	}

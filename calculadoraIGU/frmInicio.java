@@ -16,6 +16,7 @@ public class frmInicio extends JFrame implements ActionListener{
             lblResultado.setText("La suma es "+suma);*/
             ventanaLogin = new frmLogin();
             setVisible(false);
+            
         }
 
     }
