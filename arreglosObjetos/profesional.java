@@ -15,4 +15,8 @@ public class profesional extends persona{
     public void setCodigoEmpleado(int codigoEmpleado) {
         this.codigoEmpleado = codigoEmpleado;
     }
+	public void nada(){
+		
+	}
+	
 }
