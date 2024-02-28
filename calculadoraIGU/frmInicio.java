@@ -10,13 +10,11 @@ public class frmInicio extends JFrame implements ActionListener{
     static frmLogin ventanaLogin;
     public void actionPerformed(ActionEvent e){
         if(e.getSource().equals(btnSumar)){
-            /*int n1 = Integer.parseInt(txtNumeroUno.getText());
+            int n1 = Integer.parseInt(txtNumeroUno.getText());
             int n2 = Integer.parseInt(txtNumeroDos.getText());
             int suma = sumar.calcular(n1,n2);
-            lblResultado.setText("La suma es "+suma);*/
-            ventanaLogin = new frmLogin();
-            setVisible(false);
-            
+            lblResultado.setText("La suma es "+suma);
+
         }
 
     }
