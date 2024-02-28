@@ -1,13 +1,26 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-public class frmMascotas extends JFrame {
+public class frmMascotas extends JFrame implements ActionListener {
 
-    static ImageIcon imgLogo;
+    static ImageIcon imgLogo, imgRegistrar;
     static JLabel lblLogo;
+    static JButton btnRegistrar;
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(btnRegistrar)){
+            System.out.println("Pulso boton registrar");
+        }
+    }
 
     public frmMascotas(){
+        imgRegistrar = new ImageIcon(".\\img\\new.png");
+        btnRegistrar = new JButton("Registrar",imgRegistrar);
+        btnRegistrar.setBounds(50,50,150,30);
+        btnRegistrar.addActionListener(this);
 
         imgLogo = new ImageIcon(".\\img\\logo.png");
         lblLogo = new JLabel(imgLogo);
@@ -19,6 +32,7 @@ public class frmMascotas extends JFrame {
 
         ///
         add(lblLogo);
+        add(btnRegistrar);
 
         ///
 
