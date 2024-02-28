@@ -1,15 +1,24 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class frmRegistrar extends JFrame{
+public class frmRegistrar extends JFrame implements ActionListener {
     static JButton btnRegresar;
     static ImageIcon imgRegresar;
 
-    public frmRegistrar(){
-        imgRegresar = new ImageIcon(".\\img\\logo.png");
-        btnRegresar = new JButton("Regresar", imgRegresar);
-        btnRegresar.setBounds(50,50,70,30);
 
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(btnRegresar)){
+            frmMascotas.ventana.setVisible(true);
+            this.setVisible(false);
+        }
+    }
+    public frmRegistrar(){
+        imgRegresar = new ImageIcon(".\\img\\back.png");
+        btnRegresar = new JButton("Regresar", imgRegresar);
+        btnRegresar.setBounds(50,50,150,30);
+        btnRegresar.addActionListener(this);
 
         //
         add(btnRegresar);

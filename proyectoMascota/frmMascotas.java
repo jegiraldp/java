@@ -9,14 +9,19 @@ public class frmMascotas extends JFrame implements ActionListener {
     static ImageIcon imgLogo, imgRegistrar;
     static JLabel lblLogo;
     static JButton btnRegistrar;
+    static frmRegistrar ventanaRegistrar;
+    static frmMascotas ventana;
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(btnRegistrar)){
-            System.out.println("Pulso boton registrar");
+         ventanaRegistrar.setVisible(true);
+         this.setVisible(false);
         }
     }
 
     public frmMascotas(){
+        ventanaRegistrar = new frmRegistrar();
+
         imgRegistrar = new ImageIcon(".\\img\\new.png");
         btnRegistrar = new JButton("Registrar",imgRegistrar);
         btnRegistrar.setBounds(50,50,150,30);
@@ -50,7 +55,7 @@ public class frmMascotas extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        frmMascotas ventana = new frmMascotas();
+        ventana = new frmMascotas();
         ventana.setVisible(true);
     }
 
