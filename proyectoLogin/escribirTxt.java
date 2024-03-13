@@ -1,8 +1,6 @@
 import java.io.*;
 public class escribirTxt {
-    public static void main(String[] args) {
-        escribir("hola mundo");
-    }
+
     public static void escribir(String ingreso) {
         String nombreArchivo = "login.log";
         try {

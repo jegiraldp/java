@@ -11,7 +11,7 @@ public class inicio {
         String c = scn.next();
 
         if(Usuarios.validarUsuario(u,c)){
-            System.out.println("Bienvenido "+u);
+            inicioAdmin.saludar(u);
         }else{
             System.out.println("Usuario o clave incorrecta");
         }
