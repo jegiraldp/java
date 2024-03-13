@@ -1,9 +1,5 @@
 public class Usuarios {
 
-    public static void main(String[] args) {
-        System.out.println(validarUsuario("dd","cf"));
-    }
-
     static boolean validarUsuario(String usuario, String password){
         boolean bnd=false;
         String usuarios = leerTxt.leer("usuarios.txt");
@@ -12,12 +8,10 @@ public class Usuarios {
 
         for (int i = 0; i < usuarioclave.length; i++) {
             us=usuarioclave[i].split(",");
-            System.out.println(us[0]);
-
+            if(us[0].equals(usuario) && us[1].equals(password)){
+                bnd=true;
+            }
         }
-
         return bnd;
     }
-
-
 }
