@@ -1,17 +1,16 @@
-public class hiloImpares extends Thread{
-    public hiloImpares(String nombre){
-        setName(nombre);
-    }
+public class hiloImpares extends Thread {
 
-    public void run(){
+    public void run() {
 
-        try {
-            for (int i = 1; i < 11; i+=2) {
-                Thread.sleep(2000);
+        for (int i = 0; i < 100; i++) {
+            if (i % 2 != 0) {
                 System.out.println(i);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
-        } catch (InterruptedException e) {
-            System.out.println("Error");
         }
     }
 }
