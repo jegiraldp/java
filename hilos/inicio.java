@@ -1,9 +1,6 @@
 class inicio{
     public static void main(String[] args) throws InterruptedException {
-/*
-        h1.join();
-        h2.join();*/
-        System.out.println("Soy el main iniciando");
+       System.out.println("Soy el main iniciando");
       //  pares.saludar();
        // impar.saludar();
         hiloPares hiloP = new hiloPares();
@@ -11,6 +8,9 @@ class inicio{
 
         hiloImpares hiloI = new hiloImpares();
         hiloI.start();
+
+        hiloP.join();
+        hiloI.join();
 
 
         Thread.sleep(2000);
