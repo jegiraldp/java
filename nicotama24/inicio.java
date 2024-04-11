@@ -1,25 +1,12 @@
 public class inicio {
     public static void main(String[] args) {
 
-        int x = 3;
-        int y = 6;
+       nacional pn1 = new nacional(123,3000,"tetero", 999);
+       importado pi1 = new importado(0101,500,"cama china",9898);
 
-        int su = suma.sumar(x,y);
-        System.out.println("La suma es "+su);
+        System.out.println("--------- Lista de productos --------");
+        System.out.print("\n"+pn1.getCodigo()+"\t"+pn1.nombre+"\t"+pn1.getValor());
+        System.out.print("\n"+pi1.getCodigo()+"\t"+pi1.nombre+"\t"+pi1.getValor());
 
-        System.out.println("La resta es "+resta.restar(x,y));
-
-        persona objPersona1 = new persona(45,"El flaco");
-        objPersona1.saludar();
-
-        persona objPersona2 = new persona(46, "El gordo");
-        objPersona2.saludar();
-
-        System.out.println("Codigo antiguo "+objPersona1.getCodigo());
-        System.out.println("Codigo antiguo "+objPersona2.getCodigo());
-        objPersona1.setCodigo(455);
-        objPersona2.setCodigo(466);
-        System.out.println("Codigo nuevo "+objPersona1.getCodigo());
-        System.out.println("Codigo nuevo "+objPersona2.getCodigo());
     }
 }
