@@ -3,12 +3,14 @@ public class Inicio {
 
     static Scanner scn;
     static Estudiante[] listaE;
-    static int codigo, carnet;
+    static int codigo, carnet, contadorEs, posicion, codigoBuscar;
     static String nombreC;
 
 
     public static void main(String[] args) {
-        listaE = new Estudiante[10];
+        posicion=99;
+        contadorEs=0;
+        listaE = new Estudiante[3];
         scn = new Scanner(System.in);
         while(true) {
             System.out.print(menu());
@@ -19,28 +21,55 @@ public class Inicio {
     }
 
     static void operar(String opcion){
-        System.out.println("\n--- Registrar Estudiante ---- ");
+
         if(opcion.equals("1")){
-            System.out.print("\nDigite Código de Estudiante -> ");
-            codigo= scn.nextInt();
+            if(contadorEs==listaE.length){
+                System.out.println("No se pueden registrar más estudiantes");
+            }else {
+                System.out.println("\n--- Registrar Estudiante ---- ");
 
-            System.out.print("\nDigite Nombre Completo Estudiante -> ");
-            nombreC = scn.next();
+                System.out.print("\nDigite Código de Estudiante -> ");
+                codigo = scn.nextInt();
 
-            System.out.print("\nDigite Carnet Estudiante -> ");
-            carnet = scn.nextInt();
+                System.out.print("\nDigite Nombre Completo Estudiante -> ");
+                nombreC = scn.next();
+
+                System.out.print("\nDigite Carnet Estudiante -> ");
+                carnet = scn.nextInt();
 
 
-            listaE[0]= gestionEstudiantes.nuevoEstudiante(codigo,nombreC,carnet);
-            System.out.println("Estudiante Creado con éxito");
+                listaE[contadorEs] = gestionEstudiantes.nuevoEstudiante(codigo, nombreC, carnet);
+                System.out.println("Estudiante Creado con éxito");
+
+                contadorEs++;
+            }
         }
 
         if(opcion.equals("2")){
             System.out.println("\n-- Lista de estudiantes --");
-            System.out.println("Carnet\tNombre Completo");
-            for (int i = 0; i < 1; i++) {
-                System.out.println(listaE[i].getCarnet()+"\t"+listaE[i].nombreCompleto);
+            System.out.println("Codigo\tCarnet\tNombre Completo");
+            for (int i = 0; i < contadorEs; i++) {
+                System.out.println(listaE[i].getCodigo()+
+                        "\t"+listaE[i].getCarnet()+
+                        "\t"+listaE[i].nombreCompleto);
             }
+        }
+
+        if(opcion.equals("3")){
+            System.out.println("\n-- Buscar estudiante --");
+            System.out.println("Digite Código");
+            codigoBuscar = scn.nextInt();
+            posicion = gestionEstudiantes.buscarEstudiante(codigoBuscar,listaE,contadorEs);
+
+            if(posicion==99){
+                System.out.println("Estudiante NO encontrado");
+            }else{
+                System.out.println("Estudiante encontrado");
+                System.out.println(listaE[posicion].getCodigo()+
+                        "\t"+listaE[posicion].getCarnet()+
+                        "\t"+listaE[posicion].nombreCompleto);
+            }
+
         }
 
         if(opcion.equals("9")){
@@ -55,6 +84,7 @@ public class Inicio {
         return "\n\n ----------- Menú ---------------" +
                 "\n1. Registrar Estudiante" +
                 "\n2. Listar Estudiantes" +
+                "\n3. Buscar Estudiante por código" +
                 "\n--------------------------" +
                 "\n3. Registrar Docentes" +
                 "\n4. Listar Docentes" +

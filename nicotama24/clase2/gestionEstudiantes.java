@@ -5,7 +5,14 @@ public class gestionEstudiantes {
         return new Estudiante(c,nc,cn);
     }
 
-    static void buscarEstudiante(int codigo){
+    static int buscarEstudiante(int codigo, Estudiante[] lista, int contador){
+        int pos = 99;
+        for (int i = 0; i < contador; i++) {
+            if(lista[i].getCodigo()==codigo){
+              pos=i;
+            }
 
+        }
+    return pos;
     }
 }
