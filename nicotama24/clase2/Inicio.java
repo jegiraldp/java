@@ -4,7 +4,7 @@ public class Inicio {
     static Scanner scn;
     static Estudiante[] listaE;
     static int codigo, carnet, contadorEs, posicion, codigoBuscar;
-    static String nombreC;
+    static String nombreC, nuevoNombre;
 
 
     public static void main(String[] args) {
@@ -71,6 +71,23 @@ public class Inicio {
             }
 
         }
+        //////////////////editar///////////////
+        if(opcion.equals("4")){
+            System.out.println("\n-- Editar nombre estudiante --");
+            System.out.println("Digite Código");
+            codigoBuscar = scn.nextInt();
+            System.out.println("Digite Nuevo nombre");
+            nuevoNombre = scn.next();
+
+       if(gestionEstudiantes.editarNombreEstudiante(codigoBuscar,nuevoNombre,listaE,contadorEs)){
+           
+           System.out.println("Estudiante Editado");
+       }else{
+           System.out.println("Estudiante no existe");
+       }
+
+
+        }
 
         if(opcion.equals("9")){
             System.out.println("Gracias por utilizar nuestros servicios");
@@ -85,6 +102,7 @@ public class Inicio {
                 "\n1. Registrar Estudiante" +
                 "\n2. Listar Estudiantes" +
                 "\n3. Buscar Estudiante por código" +
+                "\n4. Editar Nombre Estudiante" +
                 "\n--------------------------" +
                 "\n3. Registrar Docentes" +
                 "\n4. Listar Docentes" +
