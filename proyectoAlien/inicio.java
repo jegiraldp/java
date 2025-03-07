@@ -5,12 +5,12 @@ import java.awt.event.ActionListener;
 
 
 public class inicio extends JFrame implements ActionListener {
-    JLabel nave, lblInfo, lblInfo2, lblGround,lblBomb;
+    JLabel nave, lblInfo, lblInfo2, lblGround,lblBomb,lblCabeceras;
     JButton btnIniciar, btnReset;
     Timer timer;
-    int velocidad=0, velInicio=30, frenado=60;
-    double dano=0.0, danoMinimo=0.35;
-
+    int velocidad=500, velInicio=500,capacidadFrenado=100, avanceInicio=7;
+    double dano=0.0, danoMinimo=0.35,velTotal=0.0;
+    String cabeceras="";
 
     public inicio(){
 
@@ -31,7 +31,13 @@ public class inicio extends JFrame implements ActionListener {
 
         lblInfo = new JLabel("");
         lblInfo.setForeground(Color.DARK_GRAY);
-        lblInfo.setBounds(280,20,160,25);
+        lblInfo.setBounds(280,25,180,25);
+
+        cabeceras="Vel    Fre     Ava";
+        lblCabeceras = new JLabel(cabeceras);
+        lblCabeceras.setForeground(Color.DARK_GRAY);
+        lblCabeceras.setBounds(280,10,180,25);
+        lblCabeceras.setVisible(false);
 
         lblInfo2 = new JLabel("-:");
         lblInfo2.setBounds(280,50,80,25);
@@ -56,30 +62,23 @@ public class inicio extends JFrame implements ActionListener {
         add(lblInfo2);
         add(lblGround);
         add(lblBomb);
+        add(lblCabeceras);
 
         //
-        timer = new Timer(velInicio, new ActionListener() {
+        timer = new Timer(velocidad, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                nave.setLocation(nave.getX(), nave.getY()+2);
+                velTotal= (double) (velocidad - capacidadFrenado) /1000;
+                nave.setLocation(nave.getX(), nave.getY()+avanceInicio);
 
-                if(nave.getY()==lblGround.getY()-120) {
-                    lblInfo2.setText("Alert: Limit");
-                    dano= (double) ((velInicio + frenado)/2)/100;
-                    velocidad=velInicio + frenado;
-                    lblInfo.setText("vel("+(velocidad)+"), fre("+frenado+") : Daño:"+dano);
+                lblInfo.setText(velTotal+"    "+(double)(capacidadFrenado)/1000+"     "+(double)(avanceInicio)/10);
+
+                if(nave.getY()>=lblGround.getY()-32) {
                     timer.stop();
-                    timer.setDelay(velocidad);
-                    timer.start();
-                }
-
-
-                if(nave.getY()==lblGround.getY()-32) {
-                    timer.stop();
-                    if(dano>=danoMinimo) {
+                 //   if(dano>=danoMinimo) {
                         lblBomb.setVisible(true);
                         nave.setVisible(false);
-                    }
+                   // }
                 }
             }
         });
@@ -108,7 +107,7 @@ public class inicio extends JFrame implements ActionListener {
         if (e.getSource().equals(btnIniciar)){
             velocidad=velInicio;
             btnIniciar.setEnabled(false);
-            timer.setDelay(velocidad);
+            lblCabeceras.setVisible(true);
             timer.start();
         }
 
