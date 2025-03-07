@@ -2,17 +2,28 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 
 public class inicio extends JFrame implements ActionListener {
     JLabel nave, lblInfo, lblInfo2, lblGround,lblBomb,lblCabeceras;
     JButton btnIniciar, btnReset;
     Timer timer;
-    int velocidad=500, velInicio=500,capacidadFrenado=100, avanceInicio=7;
-    double dano=0.0, danoMinimo=0.35,velTotal=0.0;
+    int velocidad=0;
+
+    //maximo avance 10
+    int avanceInicio=7;
+    //maxima velocidad 500
+    int velInicio=320;
+    //máxima capacidad frenado 100
+    int capacidadFrenado=20;
+    int velTotal=0;
+    double danoMinimo=0.10, fuerza=0.0, tiempo=0.0;
     String cabeceras="";
 
     public inicio(){
+        velocidad=velInicio;
+        DecimalFormat df = new DecimalFormat("#.###");
 
         Color c = new Color(173, 216, 230);
         getContentPane().setBackground(c);
@@ -51,9 +62,6 @@ public class inicio extends JFrame implements ActionListener {
         lblBomb.setIcon(new javax.swing.ImageIcon(getClass().getResource("bomb.png")));
         lblBomb.setVisible(false);
         //
-
-
-
         //
         add(nave);
         add(btnIniciar);
@@ -68,17 +76,20 @@ public class inicio extends JFrame implements ActionListener {
         timer = new Timer(velocidad, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                velTotal= (double) (velocidad - capacidadFrenado) /1000;
+                tiempo = (double)200/avanceInicio;
+                velTotal= velocidad - capacidadFrenado;
+                fuerza=(double)1/(velTotal/tiempo);
                 nave.setLocation(nave.getX(), nave.getY()+avanceInicio);
 
-                lblInfo.setText(velTotal+"    "+(double)(capacidadFrenado)/1000+"     "+(double)(avanceInicio)/10);
+                lblInfo.setText(velTotal+"    "+capacidadFrenado+"     "
+                        +avanceInicio +"          : "+df.format(fuerza));
 
                 if(nave.getY()>=lblGround.getY()-32) {
                     timer.stop();
-                 //   if(dano>=danoMinimo) {
+                    if(fuerza>=danoMinimo) {
                         lblBomb.setVisible(true);
                         nave.setVisible(false);
-                   // }
+                    }
                 }
             }
         });
@@ -88,7 +99,7 @@ public class inicio extends JFrame implements ActionListener {
 
         ///
         setLayout(null);
-        setSize(500,400);
+        setSize(500,380);
         setTitle("Alien Landing");
         setResizable(false);
 
