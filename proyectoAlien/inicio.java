@@ -7,22 +7,22 @@ import java.text.DecimalFormat;
 
 public class inicio extends JFrame implements ActionListener {
     JLabel nave, lblInfo, lblInfo2, lblGround,lblBomb,lblCabeceras;
-    JButton btnIniciar, btnReset;
+    JButton btnIniciar, btnSetup;
     Timer timer;
     int velocidad=0;
 
     //maximo avance 10
     int avanceInicio=7;
     //maxima velocidad 500
-    int velInicio=320;
+    int velInicio=310;
     //máxima capacidad frenado 100
-    int capacidadFrenado=20;
+    int capacidadFrenado=10;
     int velTotal=0;
-    double danoMinimo=0.10, fuerza=0.0, tiempo=0.0;
+    double danoMinimo=0.1, fuerza=0.0, tiempo=0.0;
     String cabeceras="";
 
     public inicio(){
-        velocidad=velInicio;
+
         DecimalFormat df = new DecimalFormat("#.###");
 
         Color c = new Color(173, 216, 230);
@@ -35,10 +35,11 @@ public class inicio extends JFrame implements ActionListener {
         btnIniciar = new JButton("Start");
         btnIniciar.setBounds(30,10,70,25);
         btnIniciar.addActionListener(this);
+        btnIniciar.setEnabled(false);
 
-        btnReset = new JButton("Reset");
-        btnReset.setBounds(120,10,70,25);
-        btnReset.addActionListener(this);
+        btnSetup = new JButton("Setup");
+        btnSetup.setBounds(120,10,70,25);
+        btnSetup.addActionListener(this);
 
         lblInfo = new JLabel("");
         lblInfo.setForeground(Color.DARK_GRAY);
@@ -65,7 +66,7 @@ public class inicio extends JFrame implements ActionListener {
         //
         add(nave);
         add(btnIniciar);
-        add(btnReset);
+        add(btnSetup);
         add(lblInfo);
         add(lblInfo2);
         add(lblGround);
@@ -76,6 +77,7 @@ public class inicio extends JFrame implements ActionListener {
         timer = new Timer(velocidad, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 tiempo = (double)200/avanceInicio;
                 velTotal= velocidad - capacidadFrenado;
                 fuerza=(double)1/(velTotal/tiempo);
@@ -116,16 +118,16 @@ public class inicio extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(btnIniciar)){
-            velocidad=velInicio;
             btnIniciar.setEnabled(false);
             lblCabeceras.setVisible(true);
             timer.start();
         }
 
-        if (e.getSource().equals(btnReset)){
+        if (e.getSource().equals(btnSetup)){
             velocidad=velInicio;
-            btnIniciar.setEnabled(true);
+            timer.stop();
             timer.setDelay(velocidad);
+            btnIniciar.setEnabled(true);
             nave.setLocation(100,50);
             nave.setVisible(true);
             lblBomb.setVisible(false);
