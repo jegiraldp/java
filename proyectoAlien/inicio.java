@@ -1,26 +1,32 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Random;
 
 
 public class inicio extends JFrame implements ActionListener {
-    JLabel nave, lblInfo, lblInfo2, lblGround,lblBomb,lblCabeceras;
+    JLabel nave, lblGround,lblBomb;
     JButton btnIniciar, btnSetup;
+    JScrollPane scrollPane;
+    JTextArea txtArea;
     Timer timer;
     int velocidad=0;
 
-    //maximo avance 10
-    int avanceInicio=7;
-    //maxima velocidad 500
-    int velInicio=310;
-    //máxima capacidad frenado 100
-    int capacidadFrenado=10;
-    int velTotal=0;
-    double danoMinimo=0.1, fuerza=0.0, tiempo=0.0;
-    String cabeceras="";
 
+    //maximo avance 10
+    int avanceInicio=5;
+    //maxima velocidad 500
+    int velInicio=100;
+    //máxima capacidad frenado 50
+    int capacidadFrenado=70;
+    int velTotal=0;
+    double danoMinimo=0.2, fuerza=0.0, tiempo=0.0;
+    String cabeceras="   Vel  Fre  Ava   Daño";
+    String reportando="";
     public inicio(){
 
         DecimalFormat df = new DecimalFormat("#.###");
@@ -32,7 +38,7 @@ public class inicio extends JFrame implements ActionListener {
         nave.setBounds(100,50,48,48);
         nave.setIcon(new javax.swing.ImageIcon(getClass().getResource("space.png")));
 
-        btnIniciar = new JButton("Start");
+        btnIniciar = new JButton("Go");
         btnIniciar.setBounds(30,10,70,25);
         btnIniciar.addActionListener(this);
         btnIniciar.setEnabled(false);
@@ -41,19 +47,12 @@ public class inicio extends JFrame implements ActionListener {
         btnSetup.setBounds(120,10,70,25);
         btnSetup.addActionListener(this);
 
-        lblInfo = new JLabel("");
-        lblInfo.setForeground(Color.DARK_GRAY);
-        lblInfo.setBounds(280,25,180,25);
-
-        cabeceras="Vel    Fre     Ava";
-        lblCabeceras = new JLabel(cabeceras);
-        lblCabeceras.setForeground(Color.DARK_GRAY);
-        lblCabeceras.setBounds(280,10,180,25);
-        lblCabeceras.setVisible(false);
-
-        lblInfo2 = new JLabel("-:");
-        lblInfo2.setBounds(280,50,80,25);
-        lblInfo2.setForeground(Color.red);
+        txtArea = new JTextArea();
+        txtArea.setEditable(true);
+        txtArea.setBounds(250,10,200,250);
+        txtArea.setBackground(c);
+        //txtArea.setBorder(new LineBorder(Color.blue, 1));
+        scrollPane = new JScrollPane(txtArea);
 
         lblGround = new JLabel("--------------------------");
         lblGround.setBounds(75,250,150,25);
@@ -67,11 +66,9 @@ public class inicio extends JFrame implements ActionListener {
         add(nave);
         add(btnIniciar);
         add(btnSetup);
-        add(lblInfo);
-        add(lblInfo2);
+        add(txtArea);
         add(lblGround);
         add(lblBomb);
-        add(lblCabeceras);
 
         //
         timer = new Timer(velocidad, new ActionListener() {
@@ -82,9 +79,9 @@ public class inicio extends JFrame implements ActionListener {
                 velTotal= velocidad - capacidadFrenado;
                 fuerza=(double)1/(velTotal/tiempo);
                 nave.setLocation(nave.getX(), nave.getY()+avanceInicio);
-
-                lblInfo.setText(velTotal+"    "+capacidadFrenado+"     "
-                        +avanceInicio +"          : "+df.format(fuerza));
+                reportando="   "+velTotal+"   "+capacidadFrenado+"     "+avanceInicio
+                        +"     "+df.format(fuerza);
+                txtArea.setText(cabeceras+"\n"+reportando);
 
                 if(nave.getY()>=lblGround.getY()-32) {
                     timer.stop();
@@ -119,7 +116,6 @@ public class inicio extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(btnIniciar)){
             btnIniciar.setEnabled(false);
-            lblCabeceras.setVisible(true);
             timer.start();
         }
 
@@ -131,12 +127,18 @@ public class inicio extends JFrame implements ActionListener {
             nave.setLocation(100,50);
             nave.setVisible(true);
             lblBomb.setVisible(false);
-            lblInfo2.setText("");
-            lblInfo.setText("");
-
-
+            txtArea.setText("");
         }
 
+    }
+
+    public static ArrayList<Integer> crearIndividuo(){
+        Random r = new Random();
+        ArrayList<Integer> individuo = new ArrayList<>();
+        individuo.add(r.nextInt(400)+100); //velocidad
+        individuo.add(r.nextInt(50)); // frenado
+        individuo.add(r.nextInt(6)+5);
+        return individuo;
     }
 
 
