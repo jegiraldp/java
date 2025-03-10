@@ -22,14 +22,14 @@ public class inicio extends JFrame implements ActionListener {
     //maxima velocidad 500
     int velInicio=100;
     //máxima capacidad frenado 50
-    int capacidadFrenado=70;
+    int capacidadFrenado=30;
     int velTotal=0;
     double danoMinimo=0.2, fuerza=0.0, tiempo=0.0;
-    String cabeceras="   Vel  Fre  Ava   Daño";
+    String cabeceras="   Vel  Fre  Ava   Fuerza";
     String reportando="";
     public inicio(){
 
-        DecimalFormat df = new DecimalFormat("#.###");
+        DecimalFormat df = new DecimalFormat("#.##");
 
         Color c = new Color(173, 216, 230);
         getContentPane().setBackground(c);
@@ -75,8 +75,8 @@ public class inicio extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                tiempo = (double)200/avanceInicio;
-                velTotal= velocidad - capacidadFrenado;
+                tiempo = Math.round((double)200/avanceInicio);
+                velTotal= Math.round(velocidad - capacidadFrenado);
                 fuerza=(double)1/(velTotal/tiempo);
                 nave.setLocation(nave.getX(), nave.getY()+avanceInicio);
                 reportando="   "+velTotal+"   "+capacidadFrenado+"     "+avanceInicio
