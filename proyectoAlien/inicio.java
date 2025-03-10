@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.List;
 
 
 public class inicio extends JFrame implements ActionListener {
@@ -15,21 +16,23 @@ public class inicio extends JFrame implements ActionListener {
     JTextArea txtArea;
     Timer timer;
     int velocidad=0;
+    DecimalFormat df;
+    List<List <Double>> population;
 
 
     //maximo avance 10
-    int avanceInicio=5;
+    int avanceInicio=9;
     //maxima velocidad 500
-    int velInicio=100;
+    int velInicio=124;
     //máxima capacidad frenado 50
-    int capacidadFrenado=30;
+    int capacidadFrenado=12;
     int velTotal=0;
     double danoMinimo=0.2, fuerza=0.0, tiempo=0.0;
     String cabeceras="   Vel  Fre  Ava   Fuerza";
     String reportando="";
     public inicio(){
 
-        DecimalFormat df = new DecimalFormat("#.##");
+        df= new DecimalFormat("#.##");
 
         Color c = new Color(173, 216, 230);
         getContentPane().setBackground(c);
@@ -55,7 +58,7 @@ public class inicio extends JFrame implements ActionListener {
         scrollPane = new JScrollPane(txtArea);
 
         lblGround = new JLabel("--------------------------");
-        lblGround.setBounds(75,250,150,25);
+        lblGround.setBounds(75,255,150,25);
 
         lblBomb = new JLabel("");
         lblBomb.setBounds(100,215,150,50);
@@ -75,15 +78,13 @@ public class inicio extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                tiempo = Math.round((double)200/avanceInicio);
-                velTotal= Math.round(velocidad - capacidadFrenado);
-                fuerza=(double)1/(velTotal/tiempo);
+
                 nave.setLocation(nave.getX(), nave.getY()+avanceInicio);
                 reportando="   "+velTotal+"   "+capacidadFrenado+"     "+avanceInicio
                         +"     "+df.format(fuerza);
                 txtArea.setText(cabeceras+"\n"+reportando);
 
-                if(nave.getY()>=lblGround.getY()-32) {
+                if(nave.getY()>=lblGround.getY()-35) {
                     timer.stop();
                     if(fuerza>=danoMinimo) {
                         lblBomb.setVisible(true);
@@ -120,6 +121,14 @@ public class inicio extends JFrame implements ActionListener {
         }
 
         if (e.getSource().equals(btnSetup)){
+            //
+            txtArea.setText("");
+            reportando="";
+
+            population = genetico.getPoblacion(10);
+            population=genetico.ordenarLista(population);
+
+             //
             velocidad=velInicio;
             timer.stop();
             timer.setDelay(velocidad);
@@ -127,19 +136,36 @@ public class inicio extends JFrame implements ActionListener {
             nave.setLocation(100,50);
             nave.setVisible(true);
             lblBomb.setVisible(false);
-            txtArea.setText("");
+
+
+            //
+            for(int i=0;i<population.size();i++){
+                for(int j=0;j<population.get(i).size();j++){
+                    reportando+=" "+df.format(population.get(i).get(j));
+                }
+                reportando+="\n";
+            }
+
+            txtArea.setText("--- Generation 0 ---\n"+reportando+"\n------------\n");
+        //Move
+        //better
+            reportando="";
+            population = genetico.ordenarLista(population);
+            //List<Double> mejor= population.get(population.size()-1);
+            List<Double> mejor= population.get(0);
+
+            //asignar configuracion inicial
+            velInicio= (int) (mejor.get(0)+mejor.get(1));
+            capacidadFrenado = (int) Math.round(mejor.get(1));
+            avanceInicio = (int) Math.round(mejor.get(2));
+            fuerza = mejor.get(3);
+            velTotal=velInicio-capacidadFrenado;
+
+            reportando="";
+            reportando+=" "+(velInicio-capacidadFrenado)+" "+capacidadFrenado+" "+avanceInicio+" "+df.format(fuerza);
+            txtArea.append("Init: "+reportando+"\n");
+            //
+
         }
-
     }
-
-    public static ArrayList<Integer> crearIndividuo(){
-        Random r = new Random();
-        ArrayList<Integer> individuo = new ArrayList<>();
-        individuo.add(r.nextInt(400)+100); //velocidad
-        individuo.add(r.nextInt(50)); // frenado
-        individuo.add(r.nextInt(6)+5);
-        return individuo;
-    }
-
-
 }

@@ -1,21 +1,27 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
-public class probado {
+public class genetico {
     public static void main(String[] args) {
+/*
+        int tama=100;
+        List<List<Double>> poblacion=getPoblacion(tama);
+        poblacion.sort(Comparator.comparing(sublista -> sublista.get(1)));
 
 
-        List<List<Double>> laPoblacion=getPoblacion(10);
-        for (int i = 0; i < laPoblacion.size(); i++) {
-            System.out.println(laPoblacion.get(i));
+        for (int i = 0; i < poblacion.size(); i++) {
+            System.out.println(poblacion.get(i));
         }
+
+        System.out.println("---------");
+        System.out.println("Peor:" + poblacion.get(tama-1));*/
 
     }
 
     public static double calcularFuerza(double v, double f, double a){
-        DecimalFormat df = new DecimalFormat("#.##");
         double t = (double) 200/a;
         double velTotal =v-f;
         double fuerza = (double) 1/(velTotal/t);
@@ -28,12 +34,6 @@ public class probado {
         double velo=Math.round(r.nextDouble(100)+50);
         double frena=Math.round(r.nextDouble(30));
         double ava=Math.round(r.nextDouble(6)+5);
-        /*System.out.println(velo);
-        System.out.println(frena);
-        System.out.println(ava);
-        double velo=100;
-        double frena=30;
-        double ava=5;*/
         individuo.add(velo-frena); //velocidad
         individuo.add(frena); // frenado
         individuo.add(ava); //avance
@@ -47,6 +47,11 @@ public class probado {
             poblacion.add(getIndividuo());
         }
         return poblacion;
+    }
+
+    public static List<List<Double>> ordenarLista(List<List<Double>> laPoblacion){
+        laPoblacion.sort(Comparator.comparing(sublista -> sublista.get(3)));
+        return laPoblacion;
     }
 
 }
