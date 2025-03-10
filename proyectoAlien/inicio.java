@@ -21,11 +21,11 @@ public class inicio extends JFrame implements ActionListener {
 
 
     //maximo avance 10
-    int avanceInicio=9;
+    int avanceInicio=0;
     //maxima velocidad 500
-    int velInicio=124;
+    int velInicio=0;
     //máxima capacidad frenado 50
-    int capacidadFrenado=12;
+    int capacidadFrenado=0;
     int velTotal=0;
     double danoMinimo=0.2, fuerza=0.0, tiempo=0.0;
     String cabeceras="   Vel  Fre  Ava   Fuerza";
@@ -151,8 +151,8 @@ public class inicio extends JFrame implements ActionListener {
         //better
             reportando="";
             population = genetico.ordenarLista(population);
-            //List<Double> mejor= population.get(population.size()-1);
-            List<Double> mejor= population.get(0);
+            List<Double> mejor= population.get(population.size()-1);
+            //List<Double> mejor= population.get(0);
 
             //asignar configuracion inicial
             velInicio= (int) (mejor.get(0)+mejor.get(1));

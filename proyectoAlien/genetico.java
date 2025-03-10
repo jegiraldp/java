@@ -5,34 +5,34 @@ import java.util.List;
 import java.util.Random;
 
 public class genetico {
+    static Random r;
     public static void main(String[] args) {
-/*
-        int tama=100;
+
+        int tama=10;
         List<List<Double>> poblacion=getPoblacion(tama);
-        poblacion.sort(Comparator.comparing(sublista -> sublista.get(1)));
+        poblacion=ordenarLista(poblacion);
 
-
-        for (int i = 0; i < poblacion.size(); i++) {
-            System.out.println(poblacion.get(i));
-        }
-
-        System.out.println("---------");
-        System.out.println("Peor:" + poblacion.get(tama-1));*/
-
+        System.out.println("--------- M1 M2");
+        System.out.println("M1:" + poblacion.get(0));
+        System.out.println("M1:" + poblacion.get(1));
+        System.out.println("--------- Mixed M1 M2");
+        List <Double> theMixed = cruzarList(poblacion.get(0), poblacion.get(1));
+        System.out.println(theMixed);
+        
     }
 
     public static double calcularFuerza(double v, double f, double a){
         double t = (double) 200/a;
         double velTotal =v-f;
-        double fuerza = (double) 1/(velTotal/t);
+        double fuerza = Math.abs((double) 1/(velTotal/t));
         return fuerza;
     }
 
     public static List<Double> getIndividuo() {
-        Random r = new Random();
+        r = new Random();
         List<Double> individuo = new ArrayList<>();
-        double velo=Math.round(r.nextDouble(100)+50);
-        double frena=Math.round(r.nextDouble(30));
+        double velo=Math.abs(Math.round(r.nextDouble(20)+10));
+        double frena=Math.round(r.nextDouble(5)+1);
         double ava=Math.round(r.nextDouble(6)+5);
         individuo.add(velo-frena); //velocidad
         individuo.add(frena); // frenado
@@ -52,6 +52,18 @@ public class genetico {
     public static List<List<Double>> ordenarLista(List<List<Double>> laPoblacion){
         laPoblacion.sort(Comparator.comparing(sublista -> sublista.get(3)));
         return laPoblacion;
+    }
+
+    public static List<Double> cruzarList(List<Double> theListM1,List<Double> theListM2){
+        List<Double> mixed = new ArrayList<>();
+        double theVel = Math.abs(Math.round((theListM1.get(0)+theListM2.get(0))/2));
+        double theFre = Math.abs(Math.round((theListM1.get(1)+theListM1.get(1))/2));
+        double theAva = Math.abs(Math.round((theListM1.get(2)+theListM1.get(2))/2));
+        mixed.add(theVel-theFre);
+        mixed.add(theFre);
+        mixed.add(theAva);
+        mixed.add(calcularFuerza(theVel, theFre, theAva));
+        return mixed;       
     }
 
 }
