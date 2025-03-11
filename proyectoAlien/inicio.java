@@ -10,26 +10,26 @@ import java.util.List;
 
 
 public class inicio extends JFrame implements ActionListener {
-    JLabel nave, lblGround,lblBomb;
-    JButton btnIniciar, btnSetup;
+    static JLabel nave, lblGround,lblBomb;
+    static JButton btnIniciar, btnSetup;
     JScrollPane scrollPane;
-    JTextArea txtArea;
-    Timer timer;
-    int velocidad=0;
-    DecimalFormat df;
-    List<List <Double>> population;
+    static JTextArea txtArea;
+    static Timer timer;
+    static int velocidad=0;
+    static DecimalFormat df;
+    static List<List <Double>> population;
 
 
     //maximo avance 10
-    int avanceInicio=0;
+    static int avanceInicio=0;
     //maxima velocidad 500
-    int velInicio=0;
+    static int velInicio=0;
     //máxima capacidad frenado 50
-    int capacidadFrenado=0;
-    int velTotal=0;
-    double danoMinimo=0.2, fuerza=0.0, tiempo=0.0;
-    String cabeceras="   Vel  Fre  Ava   Fuerza";
-    String reportando="";
+    static int capacidadFrenado=0;
+    static int velTotal=0;
+    static double danoMinimo=0.2, fuerza=0.0, tiempo=0.0;
+    static String cabeceras="   Vel  Fre  Ava   Fuerza";
+    static String reportando="";
     public inicio(){
 
         df= new DecimalFormat("#.##");
@@ -78,7 +78,11 @@ public class inicio extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
+                for (int i = 0; i < 2; i++) {
+                    
+                }
+                
+            
                 nave.setLocation(nave.getX(), nave.getY()+avanceInicio);
                 reportando="   "+velTotal+"   "+capacidadFrenado+"     "+avanceInicio
                         +"     "+df.format(fuerza);
@@ -115,57 +119,75 @@ public class inicio extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        
+        //Go
         if (e.getSource().equals(btnIniciar)){
             btnIniciar.setEnabled(false);
             timer.start();
+            algoritmoG(5);
+
         }
 
+
+            //setup
         if (e.getSource().equals(btnSetup)){
-            //
-            txtArea.setText("");
-            reportando="";
+           elSetup();
+        }
+    }
 
-            population = genetico.getPoblacion(10);
-            population=genetico.ordenarLista(population);
-
-             //
-            velocidad=velInicio;
-            timer.stop();
-            timer.setDelay(velocidad);
-            btnIniciar.setEnabled(true);
-            nave.setLocation(100,50);
-            nave.setVisible(true);
-            lblBomb.setVisible(false);
-
-
-            //
-            for(int i=0;i<population.size();i++){
-                for(int j=0;j<population.get(i).size();j++){
-                    reportando+=" "+df.format(population.get(i).get(j));
-                }
-                reportando+="\n";
-            }
-
-            txtArea.setText("--- Generation 0 ---\n"+reportando+"\n------------\n");
-        //Move
-        //better
-            reportando="";
+    public void algoritmoG(int ite){
+        reportando="";
+        for (int i = 0; i < ite; i++) {
+           
+            
             population = genetico.ordenarLista(population);
             List<Double> mejor= population.get(population.size()-1);
             //List<Double> mejor= population.get(0);
-
+   
             //asignar configuracion inicial
-            velInicio= (int) (mejor.get(0)+mejor.get(1));
+            velInicio= (int) Math.round(mejor.get(0));
             capacidadFrenado = (int) Math.round(mejor.get(1));
             avanceInicio = (int) Math.round(mejor.get(2));
             fuerza = mejor.get(3);
-            velTotal=velInicio-capacidadFrenado;
-
+            velTotal=velInicio;
+   
             reportando="";
-            reportando+=" "+(velInicio-capacidadFrenado)+" "+capacidadFrenado+" "+avanceInicio+" "+df.format(fuerza);
+            reportando+=" "+velInicio+" "+capacidadFrenado+" "+avanceInicio+" "+df.format(fuerza);
             txtArea.append("Init: "+reportando+"\n");
-            //
-
+            // 
         }
+    }
+
+    public static void elSetup(){
+         //
+         txtArea.setText("");
+         reportando="";
+
+         population = genetico.getPoblacion(10);
+         population=genetico.ordenarLista(population);
+
+          //
+         velocidad=velInicio;
+         timer.stop();
+         timer.setDelay(velocidad);
+         btnIniciar.setEnabled(true);
+         nave.setLocation(100,50);
+         nave.setVisible(true);
+         lblBomb.setVisible(false);
+
+
+         //
+         for(int i=0;i<population.size();i++){
+             for(int j=0;j<population.get(i).size();j++){
+                 reportando+=" "+df.format(population.get(i).get(j));
+             }
+             reportando+="\n";
+         }
+
+         txtArea.setText("--- Generation 0 ---\n"+reportando+"\n------------\n");
+     //Move
+     //better
+        
+
     }
 }
