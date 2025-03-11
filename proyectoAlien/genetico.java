@@ -15,7 +15,7 @@ public class genetico {
             int generaciones=0;
        
            while(bnd){
-            if(poblacion.get(0).get(3)<0.02)
+            if(poblacion.get(0).get(3)<0.2)
             { 
                 System.out.println("Finish...");
                 bnd=false;
@@ -24,10 +24,9 @@ public class genetico {
                 System.out.println("--------- M1 M2   Generacion:"+generaciones);
                 System.out.println("M1:" + poblacion.get(0));
                 System.out.println("M2:" + poblacion.get(1));
-               
                 System.out.println("--------- Mixed M1 M2");
                 List <Double> theMixed = cruzarList(poblacion.get(0), poblacion.get(1));
-                System.out.println(theMixed+"\n");
+                System.out.println(theMixed);
                 poblacion=nuevaPoblacionAndMutate(theMixed, tama);
                 poblacion=ordenarLista(poblacion);
                 //System.out.println("--------- G"+(i+1));
@@ -82,9 +81,9 @@ public class genetico {
         for (int i = 0; i < tamanio; i++) {
            
             List<Double> newIndividuo = new ArrayList<Double>();
-            numAleatorio= r.nextDouble()*6;
+            numAleatorio= r.nextDouble()*1;
                        
-            newValueVel=Math.abs(Math.round(nuevoPadre.get(0)+numAleatorio));
+            newValueVel=Math.abs(Math.round(nuevoPadre.get(0)+0.1));
             newValueFre=Math.abs(Math.round(nuevoPadre.get(1)+0.1));
             newValueAva=nuevoPadre.get(2);
                                  
@@ -108,8 +107,8 @@ public class genetico {
         double theVel = Math.abs(Math.round((theListM1.get(0)+theListM2.get(0))/2));
         double theFre = Math.abs(Math.round((theListM1.get(1)+theListM2.get(1))/2));
         double theAva = Math.abs(Math.round((theListM1.get(2)+theListM2.get(2))/2));
-        theFre+=(theFre)/3;
-        theVel+=(theVel)/3;
+        theFre+=0.1;
+        theVel+=(theVel)/10;
        
         mixed.add(theVel);
         mixed.add(theFre);
