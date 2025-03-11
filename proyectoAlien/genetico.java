@@ -11,13 +11,22 @@ public class genetico {
         int tama=10;
         List<List<Double>> poblacion=getPoblacion(tama);
         poblacion=ordenarLista(poblacion);
-
-        System.out.println("--------- M1 M2");
-        System.out.println("M1:" + poblacion.get(0));
-        System.out.println("M1:" + poblacion.get(1));
-        System.out.println("--------- Mixed M1 M2");
-        List <Double> theMixed = cruzarList(poblacion.get(0), poblacion.get(1));
-        System.out.println(theMixed);
+        for (int i = 0; i < 100; i++) {
+            
+            System.out.println("--------- M1 M2");
+            System.out.println("M1:" + poblacion.get(0));
+            System.out.println("M2:" + poblacion.get(1));
+            System.out.println("--------- Mixed M1 M2");
+            List <Double> theMixed = cruzarList(poblacion.get(0), poblacion.get(1));
+            System.out.println(theMixed+"\n");
+            poblacion=nuevaPoblacionAndMutate(theMixed, tama);
+            poblacion=ordenarLista(poblacion);
+            System.out.println("--------- G"+(i+1));
+            for (int j = 0; j < tama; j++) {
+                System.out.println(poblacion.get(j));
+                
+            }
+        }
         
     }
 
@@ -33,7 +42,7 @@ public class genetico {
         List<Double> individuo = new ArrayList<>();
         double velo=Math.abs(Math.round(r.nextDouble(20)+10));
         double frena=Math.round(r.nextDouble(5)+1);
-        double ava=Math.round(r.nextDouble(6)+5);
+        double ava=Math.round(r.nextDouble(6)+4);
         individuo.add(velo-frena); //velocidad
         individuo.add(frena); // frenado
         individuo.add(ava); //avance
@@ -49,6 +58,33 @@ public class genetico {
         return poblacion;
     }
 
+    public static List<List<Double>> nuevaPoblacionAndMutate(List<Double> nuevoPadre, int tamanio){
+        List<List<Double>> newPoblacion = new ArrayList<>();
+        double numAleatorio = 0.0;
+        double newValueVel=0.0;
+        double newValueFre=0.0;
+        double newValueAva=0.0;
+        
+        
+        for (int i = 0; i < tamanio; i++) {
+           
+            List<Double> newIndividuo = new ArrayList<Double>();
+            numAleatorio= r.nextDouble()*6;
+                       
+            newValueVel=Math.abs(Math.round(nuevoPadre.get(0)+numAleatorio));
+            newValueFre=Math.abs(Math.round(nuevoPadre.get(1)+numAleatorio));
+            newValueAva=nuevoPadre.get(2);
+                                 
+            newIndividuo.add(newValueVel);
+            newIndividuo.add(newValueFre);
+            newIndividuo.add(newValueAva);
+            newIndividuo.add(calcularFuerza(newValueVel, newValueFre, newValueAva));
+            newPoblacion.add(newIndividuo);
+            
+        }
+        return newPoblacion;
+    }
+
     public static List<List<Double>> ordenarLista(List<List<Double>> laPoblacion){
         laPoblacion.sort(Comparator.comparing(sublista -> sublista.get(3)));
         return laPoblacion;
@@ -57,9 +93,11 @@ public class genetico {
     public static List<Double> cruzarList(List<Double> theListM1,List<Double> theListM2){
         List<Double> mixed = new ArrayList<>();
         double theVel = Math.abs(Math.round((theListM1.get(0)+theListM2.get(0))/2));
-        double theFre = Math.abs(Math.round((theListM1.get(1)+theListM1.get(1))/2));
-        double theAva = Math.abs(Math.round((theListM1.get(2)+theListM1.get(2))/2));
-        mixed.add(theVel-theFre);
+        double theFre = Math.abs(Math.round((theListM1.get(1)+theListM2.get(1))/2));
+        double theAva = Math.abs(Math.round((theListM1.get(2)+theListM2.get(2))/2));
+        theFre+=(theFre)/2;
+       
+        mixed.add((theVel-theFre)+(theVel)/2);
         mixed.add(theFre);
         mixed.add(theAva);
         mixed.add(calcularFuerza(theVel, theFre, theAva));
