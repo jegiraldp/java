@@ -15,7 +15,7 @@ public class genetico {
             int generaciones=0;
        
            while(bnd){
-            if(poblacion.get(0).get(3)<0.2)
+            if(poblacion.get(0).get(3)<0.1)
             { 
                 System.out.println("Finish...");
                 bnd=false;
@@ -43,7 +43,8 @@ public class genetico {
     }//main
 
     public static double calcularFuerza(double v, double f, double a){
-        double t = (double) 200/a;
+        int escala=10;
+        double t = (double) (200*escala)/(v-a);
         double velTotal =v-f;
         double fuerza = Math.abs((double) 1/(velTotal/t));
         return fuerza;
@@ -52,9 +53,9 @@ public class genetico {
     public static List<Double> getIndividuo() {
         r = new Random();
         List<Double> individuo = new ArrayList<>();
-        double velo=Math.abs(Math.round(r.nextDouble(20)+10));
-        double frena=Math.round(r.nextDouble(5)+1);
-        double ava=Math.round(r.nextDouble(6)+4);
+        double velo=Math.abs(Math.round(r.nextInt(10)+10));
+        double frena=Math.round(r.nextInt(10)+1);
+        double ava=Math.round(r.nextInt(10)+5);
         individuo.add(velo); //velocidad
         individuo.add(frena); // frenado
         individuo.add(ava); //avance
@@ -72,7 +73,7 @@ public class genetico {
 
     public static List<List<Double>> nuevaPoblacionAndMutate(List<Double> nuevoPadre, int tamanio){
         List<List<Double>> newPoblacion = new ArrayList<>();
-        double numAleatorio = 0.0;
+        double  numAleatorio = 0.0;
         double newValueVel=0.0;
         double newValueFre=0.0;
         double newValueAva=0.0;
@@ -81,11 +82,17 @@ public class genetico {
         for (int i = 0; i < tamanio; i++) {
            
             List<Double> newIndividuo = new ArrayList<Double>();
-            numAleatorio= r.nextDouble()*1;
+            numAleatorio= r.nextDouble();
                        
             newValueVel=Math.abs(Math.round(nuevoPadre.get(0)+0.1));
             newValueFre=Math.abs(Math.round(nuevoPadre.get(1)+0.1));
-            newValueAva=nuevoPadre.get(2);
+
+            if(nuevoPadre.get(2)>2){
+                newValueAva=nuevoPadre.get(2)-numAleatorio;
+            }else{
+                newValueAva=nuevoPadre.get(2);
+            }
+            
                                  
             newIndividuo.add(newValueVel);
             newIndividuo.add(newValueFre);
