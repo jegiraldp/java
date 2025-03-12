@@ -10,6 +10,8 @@ import java.util.List;
 
 
 public class inicio extends JFrame implements ActionListener {
+    static ImageIcon imgNaveIcon, imgBombaIcon, imgAlienIcon;
+    
     static JLabel nave, lblGround,lblBomb, lblNaveAlien;
     static JButton btnGo, btnSetup;
     JScrollPane scrollPane;
@@ -27,7 +29,7 @@ public class inicio extends JFrame implements ActionListener {
     //máxima capacidad frenado 50
     static int capacidadFrenado=0;
     static int velTotal=0;
-    static double danoMinimo=0.25, fuerza=0.0, tiempo=0.0;
+    static double danoMinimo=2, fuerza=0.0, tiempo=0.0;
     static String cabeceras="V     B     S     F";
     static String reportando="";
     public inicio(){
@@ -37,9 +39,14 @@ public class inicio extends JFrame implements ActionListener {
         Color c = new Color(173, 216, 230);
         getContentPane().setBackground(c);
         //
+
+        imgNaveIcon = new ImageIcon("nave.png");
+        imgBombaIcon = new ImageIcon("bomb.png");
+        imgAlienIcon = new ImageIcon("alien.png");
+        
         nave = new JLabel();
         nave.setBounds(100,50,48,48);
-        nave.setIcon(new javax.swing.ImageIcon(getClass().getResource("nave.png")));
+        nave.setIcon(imgNaveIcon);
 
         btnGo = new JButton("Go");
         btnGo.setBounds(30,10,70,25);
@@ -62,12 +69,12 @@ public class inicio extends JFrame implements ActionListener {
 
         lblBomb = new JLabel("");
         lblBomb.setBounds(100,225,150,50);
-        lblBomb.setIcon(new javax.swing.ImageIcon(getClass().getResource("bomb.png")));
+        lblBomb.setIcon(imgBombaIcon);
         lblBomb.setVisible(false);
 
         lblNaveAlien = new JLabel("");
         lblNaveAlien.setBounds(100,225,150,50);
-        lblNaveAlien.setIcon(new javax.swing.ImageIcon(getClass().getResource("naveAlien.png")));
+        lblNaveAlien.setIcon(imgAlienIcon);
         lblNaveAlien.setVisible(false);
 
         //
@@ -86,19 +93,18 @@ public class inicio extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                
-               
                 nave.setLocation(nave.getX(), nave.getY()+avanceInicio);
                 if(r2.isRunning()) r2.stop();
-                
-
+               
                 if(nave.getY()>=lblGround.getY()-28) {
+                    
                     timer.stop();
                     
                     if(fuerza>=danoMinimo) {
                         lblBomb.setVisible(true);
                         nave.setVisible(false);
                     }else{
-                        txtArea.append("\n\n\n     You do it !!  :)");
+                        txtArea.append("\n\n\n     Good job !!  :)");
                         lblNaveAlien.setVisible(true);
                         nave.setVisible(false);
                         continuar=false;
@@ -173,6 +179,7 @@ public class inicio extends JFrame implements ActionListener {
         
         //Go
         if (e.getSource().equals(btnGo)){
+            continuar=true;
             txtArea.setText("");
              reportando="\n"+velInicio+"   "+capacidadFrenado+"     "+avanceInicio
                         +"     "+df.format(fuerza)+"\n\nGeneration: "+contador;
@@ -211,7 +218,6 @@ public class inicio extends JFrame implements ActionListener {
          fuerza = inicial.get(3);
 
           //
-          timer.stop();
           timer.setDelay(velInicio);
           btnGo.setEnabled(true);
           nave.setLocation(100,50);

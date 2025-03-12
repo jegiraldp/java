@@ -7,6 +7,10 @@ import java.util.Random;
 public class genetico {
     static Random r;
     static boolean bnd;
+
+    public static void main(String[] args) {
+        System.out.println("hola");
+    }
     
 
     public static double calcularFuerza(double v, double f, double a){
