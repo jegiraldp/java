@@ -7,40 +7,7 @@ import java.util.Random;
 public class genetico {
     static Random r;
     static boolean bnd;
-    public static void main(String[] args) {
-            bnd=true;
-            int tama=10;
-            List<List<Double>> poblacion=getPoblacion(tama);
-            poblacion=ordenarLista(poblacion);
-            int generaciones=0;
-       
-           while(bnd){
-            if(poblacion.get(0).get(3)<0.1)
-            { 
-                System.out.println("Finish...");
-                bnd=false;
-            }else{
-                
-                System.out.println("--------- M1 M2   Generacion:"+generaciones);
-                System.out.println("M1:" + poblacion.get(0));
-                System.out.println("M2:" + poblacion.get(1));
-                System.out.println("--------- Mixed M1 M2");
-                List <Double> theMixed = cruzarList(poblacion.get(0), poblacion.get(1));
-                System.out.println(theMixed);
-                poblacion=nuevaPoblacionAndMutate(theMixed, tama);
-                poblacion=ordenarLista(poblacion);
-                //System.out.println("--------- G"+(i+1));
-                for (int j = 0; j < tama; j++) {
-                    System.out.println(poblacion.get(j));                   
-                }
-            }
-               
-                generaciones++;
-            }
-            
-        
-        
-    }//main
+    
 
     public static double calcularFuerza(double v, double f, double a){
         int escala=10;

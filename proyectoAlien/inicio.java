@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public class inicio extends JFrame implements ActionListener {
-    static JLabel nave, lblGround,lblBomb, lblNaveAlien, lblInvasion;
+    static JLabel nave, lblGround,lblBomb, lblNaveAlien;
     static JButton btnGo, btnSetup;
     JScrollPane scrollPane;
     static JTextArea txtArea;
@@ -70,10 +70,6 @@ public class inicio extends JFrame implements ActionListener {
         lblNaveAlien.setIcon(new javax.swing.ImageIcon(getClass().getResource("naveAlien.png")));
         lblNaveAlien.setVisible(false);
 
-        lblInvasion = new JLabel("");
-        lblInvasion.setBounds(250,250,148,148);
-        lblInvasion.setIcon(new javax.swing.ImageIcon(getClass().getResource("invasion.png")));
-        lblInvasion.setVisible(false);
         //
         //
         add(nave);
@@ -83,7 +79,7 @@ public class inicio extends JFrame implements ActionListener {
         add(lblGround);
         add(lblBomb);
         add(lblNaveAlien);
-        add(lblInvasion);
+       
 
         //
         timer = new Timer(velInicio, new ActionListener() {
