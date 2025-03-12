@@ -1,0 +1,10 @@
+javac *.java
+
+Crea un archivo de manifiesto (manifest.txt) que contenga lo siguiente:
+
+Main-Class: inicio
+
+
+jar cmf manifest.txt nombreDelArchivo.jar *.class *.png
+
+java -jar nombreDelArchivo.jar
