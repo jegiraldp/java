@@ -19,6 +19,7 @@ public class inicio {
         }
 
         optionalNames.ifPresent(namesValue -> namesValue.forEach(System.out::println));
+       
 
         
     }
@@ -40,8 +41,7 @@ public class inicio {
     }
 
     static Optional <List <String>> getOptionalNames(){
-        List<String> nameList = new LinkedList<>();
-        return Optional.of(nameList);
+       return Optional.of(new LinkedList<>());
 
     }
     
