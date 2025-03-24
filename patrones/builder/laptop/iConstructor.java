@@ -1,4 +1,4 @@
-package builder;
+package builder.laptop;
 
 public interface iConstructor {
     void setMarca(String marca);

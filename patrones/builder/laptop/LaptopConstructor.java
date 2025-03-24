@@ -1,4 +1,4 @@
-package builder;
+package builder.laptop;
 
 public class LaptopConstructor implements iConstructor {
 

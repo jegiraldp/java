@@ -1,4 +1,4 @@
-package builder;
+package builder.laptop;
 
 public class inicio {
 
@@ -9,7 +9,14 @@ public class inicio {
         gamer.setMemoria(15);
 
         System.out.println(gamer.toString());
-    
+
+        //
+        DesktopConstructor gamer2 = DesktopConstructor.getResult();
+        gamer2.setMarca("Clone");
+        gamer2.setModelo(2020);
+        gamer2.setMemoria(32);
+
+        System.out.println(gamer2.toString());
         
     }
     

@@ -1,8 +1,8 @@
-public class inicio {
+public class InicioFelinos {
 
    public static void main(String[] args) {
     
-    Fabrica laFabricaGatos = new Fabricagatos();
+    Fabrica laFabricaGatos = new FabricaGatos();
     Fabrica laFabricaLeones = new FabricaLeones();
 
     Gato g = (Gato) laFabricaGatos.crearFelino();
