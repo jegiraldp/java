@@ -8,7 +8,7 @@ public class Inicioemployees {
 
     public static void main(String[] args) {
         List<Employee> employees = new ArrayList<>();
-        List<Employee> employeesCopie = new ArrayList<>();
+        //List<Employee> employeesCopie = new ArrayList<>();
 
         Fulltime e1 = new Fulltime();
         e1.code=123;
@@ -33,7 +33,7 @@ public class Inicioemployees {
         employees.forEach(System.out::println);
 
         System.out.println("Employee List Copie");
-        employeesCopie = employees.stream()
+        employees.stream()
                         .map(Employee::clone)
                         .collect(Collectors.toList());
         employees.forEach(System.out::println);
