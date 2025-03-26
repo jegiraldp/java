@@ -14,7 +14,7 @@ public abstract class Figura {
     
 
 
-    public abstract String pintandoFigura();
+    public abstract void pintandoFigura();
   
 
     public iColor getColor() {

@@ -8,10 +8,9 @@ public class Circulo extends Figura{
     }
 
     @Override
-    public String pintandoFigura() {
-        String retorno="";
-        retorno +=super.getColor().pintar();
-        return retorno;
+    public void pintandoFigura() {
+        super.getColor().pintar();
+        
     }
 }
     

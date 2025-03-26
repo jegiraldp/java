@@ -10,11 +10,12 @@ public class InicioColores {
         Azul Cazul = new Azul();
         Triangulo t = new Triangulo(Cazul, 321, "Triangulo ");
 
-        System.out.println(c.getNombre()+" "+c.pintandoFigura());
+        System.out.println(c.getNombre()+""+t.getColor());
         c.pintandoFigura();
 
-        System.out.println(t.getNombre()+" "+t.pintandoFigura());
+        System.out.println(t.getNombre()+""+t.getColor());
         t.pintandoFigura();
+        
 
        
 
