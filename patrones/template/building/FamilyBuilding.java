@@ -9,17 +9,17 @@ public class FamilyBuilding extends Building{
 
     @Override
     void prepairGround() {
-       System.out.println("Preparing Ground to Families");
+       System.out.println("Preparing Ground to Families "+" "+name);
     }
 
     @Override
     void buildFoundations() {
-        System.out.println("Building foundations to Families");
+        System.out.println("Building foundations to Families "+" "+name);
     }
 
     @Override
     void builWalls() {
-        System.out.println("Building Walls to Families");
+        System.out.println("Building Walls to Families "+" "+name);
     }
     
 }

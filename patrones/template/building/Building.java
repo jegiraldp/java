@@ -6,8 +6,8 @@ public abstract class Building {
    
     public void builStructure(){
         prepairGround();
-        builStructure();
-       // builWalls();
+        buildFoundations();
+        builWalls();
     }
 
     abstract void prepairGround();
