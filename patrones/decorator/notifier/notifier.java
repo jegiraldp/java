@@ -1,6 +1,7 @@
 package decorator.notifier;
 
 public class notifier implements iNotifier {
+    @SuppressWarnings("unused")
     private int code;
 
     public notifier(int code) {

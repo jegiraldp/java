@@ -1,6 +1,7 @@
 package proxy.library;
 
 public class ServicioLendignProxy implements iLendingService{
+    @SuppressWarnings("unused")
     private iLendingService theService;
 
     @Override
