@@ -6,6 +6,8 @@ public class inicio {
         conexionDB objMySQL2 = conexionDB.getObjeto("2");
         objMySQL2.conectar();
 
+        ////////////////////
+
     }
     
 }

@@ -24,7 +24,7 @@ public class conexionDB{
             System.out.println("Se crea y se retorna");
             objeto= new conexionDB(c, "MySQL...");
         }else{
-            System.out.println("NO se crea y se retorna");
+            System.out.println("No se crea y se retorna");
         }
         return objeto;
     }
