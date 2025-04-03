@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class inicio {
+public class InicioUno {
 
     public static void main(String[] args) {
         List<String> profesores = getList("jorge","giraldo","plaza");
@@ -16,7 +16,6 @@ public class inicio {
 
     static <T> List<T> getList(T... elements){
         return Arrays.asList(elements);
-        
     }
     
 }
