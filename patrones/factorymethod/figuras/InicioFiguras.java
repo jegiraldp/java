@@ -7,7 +7,6 @@ public class InicioFiguras {
         Circulo cir = (Circulo) Fcirculos.crearFigura();
         cir.pintar();
 
-
         FabricaCuadrados Fcuadrados = new FabricaCuadrados();
         Cuadrado cua = (Cuadrado) Fcuadrados.crearFigura();
         cua.pintar();
