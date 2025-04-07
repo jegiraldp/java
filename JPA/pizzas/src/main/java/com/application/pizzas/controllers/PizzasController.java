@@ -1,4 +1,4 @@
-package com.application.pizzas;
+package com.application.pizzas.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 public class PizzasController {
 
-    @RequestMapping("/teso")
+    @RequestMapping("/hi")
     public String hi() {
-        return new String("Hi from VS Code - You are amazing George");
+        return new String(" You did it");
     }
     
     
