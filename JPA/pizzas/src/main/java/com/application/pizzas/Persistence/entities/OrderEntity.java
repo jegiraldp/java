@@ -1,5 +1,6 @@
 package com.application.pizzas.persistence.entities;
 
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,28 +14,31 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name="pizza")
+@Table(name="pizzaorder")
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
 
-public class PizzaEntity {
-    
+public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable = false)
-    private Integer idPizza;
+    private Integer idOrder;
 
-    @Column(nullable = false, length = 30, unique = true)  //no nombres iguales
-    private String name;
+    @Column(name="id_customer", nullable = false, length = 15)
+    private String idCustomer;
 
-    @Column(nullable = false, length = 100) 
+    @Column(nullable = false, columnDefinition = "DATETIME")
+    private LocalDateTime date;
+
+    @Column(nullable = false, columnDefinition = "DECIMAL(6,2)")
+    private Double total;
+
+    @Column(nullable = false, columnDefinition = "CHAR(1)")
+    private String method;
+
+    @Column(length = 200)
     private String description;
-    
-    @Column(nullable = false, columnDefinition = "Decimal(5,2)") 
-    private Double price;
 
-    @Column(nullable = false) 
-    private Integer available;
 }
