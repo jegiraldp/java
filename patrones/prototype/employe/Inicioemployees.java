@@ -31,13 +31,13 @@ public class Inicioemployees {
         
         System.out.println("Employee List");
         employees.forEach(System.out::println);
-
+/* 
         System.out.println("Employee List Copie");
         employees.stream()
                         .map(Employee::clone)
                         .collect(Collectors.toList());
         employees.forEach(System.out::println);
-
+*/
     }
     
 }

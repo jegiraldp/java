@@ -2,8 +2,6 @@ package prototype.employe;
 public class Fulltime extends Employee{
     public int officeCode; 
 
-    
-
     public Fulltime(Fulltime target) {
         super(target);
         if(target!=null){

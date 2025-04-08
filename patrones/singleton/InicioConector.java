@@ -1,4 +1,4 @@
-public class inicio {
+public class InicioConector {
     public static void main(String[] args) {
         conexionDB objMySQL = conexionDB.getObjeto("1");
         objMySQL.conectar();

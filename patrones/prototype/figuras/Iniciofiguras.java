@@ -32,14 +32,14 @@ public class Iniciofiguras {
 
         System.out.println("Shape List");
         shapes.forEach(System.out::println);
-
+/*
         for (Shape theShape : shapes) {
             shapeCopies.add(theShape.clone());
         }
 
         System.out.println("ShapeCopies List");
         shapeCopies.forEach(System.out::println);
-      
+       */
         
 
     }
