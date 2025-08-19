@@ -12,10 +12,10 @@ public class Cedula {
     public static Cedula getInstance(){
         
         if(instancia==null){
-            System.out.println("Se crea y se retorna");
+            System.out.println("Se crea");
             instancia= new Cedula(302010,2026);
         }
-
+        System.out.println("Se retorna");
         return instancia;
     }
 
